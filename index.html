@@ -1,3 +1,5 @@
+<!-- SSnoHCP V1.6 TEST — Scorecard hole numerals use Oswald medium weight 500 instead of bold; current/next hole remains weight 700. Shared presentation change mirrored in SSHCP V23.95. Exact SSnoHCP V1.5 (1.5-T8H4CP) donor. Preserve V1.5 total-panel width. No scoring, routing, Worker, manifest, or layout edits. -->
+<!-- SSnoHCP | BASE KEY: 1.5-T8H4CP | BUILD KEY: 1.6-U8H4CP -->
 <!-- SSnoHCP V1.5 TEST — Match the scorecard running-total gray panel's default WIDTH to the live blue score-button width (1.5 × --v5-score-box); expand only when the displayed gross total requires more space at the established header font size. Preserve gray color, header height, typography, hole-score boxes, score logic, MASTER/PWA routing, Worker and spreadsheets. Exact SSnoHCP V1.4 (1.4-S7H4CP) donor. -->
 <!-- SSnoHCP | BASE KEY: 1.4-S7H4CP | BUILD KEY: 1.5-T8H4CP -->
 <!-- SSnoHCP V1.4 TEST — neutral ONE-APP SimpleScramble identity: canonical manifest ID /SS/, relative start_url ./ and scope /SS. Both frontends keep the same /SSHCP/manifest.webmanifest link; the manifest contains NO handicap-mode names. No scoring, layout, authorization, Worker or Sheet edits. Exact V1.3 (1.3-R8H4CP) donor. -->
@@ -16153,6 +16155,17 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 
 
 <script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.1';window.SSNOHCP_BUILD_KEY='1.1-Q8H4CP';</script>
+<style id="simplescramble-scorecard-hole-weight-shared">
+/* Shared SSHCP/SSnoHCP scorecard typography: keep hole numerals
+   medium (not bold); the current/next hole remains bold. */
+#scorecardView .hole-cell .hole-number {
+  font-weight: 500 !important;
+}
+#scorecardView .hole-cell.next-hole-cell .hole-number,
+#scorecardView .hole-cell[data-entry-hole-cue-v1981="1"] .hole-number {
+  font-weight: 700 !important;
+}
+</style>
 </head>
 
 

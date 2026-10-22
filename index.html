@@ -1,3 +1,7 @@
+<!-- SSnoHCP V1.8 TEST — Correct target: LIVE LEADERBOARD THRU hole numerals now Oswald regular (400), not heavy (800). Undo unintended V1.7 scorecard HOLE weight override; preserve original scorecard styling, running-total box, other leaderboard columns, one-app PWA routing, score logic and Worker. HOME and runtime identity updated to V1.8. Exact donor SSnoHCP V1.7 / BUILD 1.7-V9H4CP. -->
+<!-- SSnoHCP | BASE KEY: 1.7-V9H4CP | BUILD KEY: 1.8-W7H4CP -->
+<!-- SSnoHCP V1.7 TEST — Correct visible HOME version to V1.7, synchronize SSnoHCP identity metadata and reduce ordinary scorecard hole-number weight to Oswald 400 for a visible contrast while active/current hole remains 700. HCP scorecard weight intentionally unchanged. Exact donor V1.6 / 1.6-U8H4CP. -->
+<!-- SSnoHCP | BASE KEY: 1.6-U8H4CP | BUILD KEY: 1.7-V9H4CP -->
 <!-- SSnoHCP V1.6 TEST — Scorecard hole numerals use Oswald medium weight 500 instead of bold; current/next hole remains weight 700. Shared presentation change mirrored in SSHCP V23.95. Exact SSnoHCP V1.5 (1.5-T8H4CP) donor. Preserve V1.5 total-panel width. No scoring, routing, Worker, manifest, or layout edits. -->
 <!-- SSnoHCP | BASE KEY: 1.5-T8H4CP | BUILD KEY: 1.6-U8H4CP -->
 <!-- SSnoHCP V1.5 TEST — Match the scorecard running-total gray panel's default WIDTH to the live blue score-button width (1.5 × --v5-score-box); expand only when the displayed gross total requires more space at the established header font size. Preserve gray color, header height, typography, hole-score boxes, score logic, MASTER/PWA routing, Worker and spreadsheets. Exact SSnoHCP V1.4 (1.4-S7H4CP) donor. -->
@@ -16154,18 +16158,17 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 </style>
 
 
-<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.1';window.SSNOHCP_BUILD_KEY='1.1-Q8H4CP';</script>
-<style id="simplescramble-scorecard-hole-weight-shared">
-/* Shared SSHCP/SSnoHCP scorecard typography: keep hole numerals
-   medium (not bold); the current/next hole remains bold. */
-#scorecardView .hole-cell .hole-number {
-  font-weight: 500 !important;
-}
-#scorecardView .hole-cell.next-hole-cell .hole-number,
-#scorecardView .hole-cell[data-entry-hole-cue-v1981="1"] .hole-number {
-  font-weight: 700 !important;
+<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.8';window.SSNOHCP_BUILD_KEY='1.8-W7H4CP';</script>
+<style id="ssnohcp-v18-leaderboard-thru-weight">
+/* SSnoHCP V1.8: THRU hole values on the live leaderboard are regular
+   Oswald 400 instead of heavy 800. Header, scores, placement, and
+   all scorecard typography retain the established appearance. */
+#leaderboardView #leaderRows .leader-through-value.ssnohcp-thru-value-v10,
+#leaderboardView #leaderRows .leader-through-value.ssnohcp-thru-value-v10.has-progress {
+  font-weight: 400 !important;
 }
 </style>
+
 </head>
 
 
@@ -16294,7 +16297,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 
         <button id="testLogHotspot" class="home-event-test-hotspot" type="button" aria-label="Open test log">
           <span id="homeEventInfoV2255" class="home-event-info"></span>
-          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.5</span></span>
+          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.8</span></span>
         </button>
         <script>
           (function () {

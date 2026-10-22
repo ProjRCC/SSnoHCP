@@ -1,3 +1,5 @@
+<!-- SSnoHCP V1.5 TEST — Match the scorecard running-total gray panel's default WIDTH to the live blue score-button width (1.5 × --v5-score-box); expand only when the displayed gross total requires more space at the established header font size. Preserve gray color, header height, typography, hole-score boxes, score logic, MASTER/PWA routing, Worker and spreadsheets. Exact SSnoHCP V1.4 (1.4-S7H4CP) donor. -->
+<!-- SSnoHCP | BASE KEY: 1.4-S7H4CP | BUILD KEY: 1.5-T8H4CP -->
 <!-- SSnoHCP V1.4 TEST — neutral ONE-APP SimpleScramble identity: canonical manifest ID /SS/, relative start_url ./ and scope /SS. Both frontends keep the same /SSHCP/manifest.webmanifest link; the manifest contains NO handicap-mode names. No scoring, layout, authorization, Worker or Sheet edits. Exact V1.3 (1.3-R8H4CP) donor. -->
 <!-- SSnoHCP | BASE KEY: 1.3-R8H4CP | BUILD KEY: 1.4-S7H4CP -->
 <!-- SSnoHCP V1.3 TEST — UNIFIED SimpleScramble PWA identity: both repository frontends use the SAME /SSHCP/manifest.webmanifest (app ID /SSHCP/, start URL /SSHCP/, navigation scope /SS). Both modes install as SimpleScramble, and MASTER navigation between /SSHCP/ and /SSnoHCP/ remains in scope. Exact V1.2 (1.2-M7H4CP) donor; scoring, WORKER and visual geometry unchanged. -->
@@ -16139,6 +16141,17 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
   overflow:visible!important;
 }
 </style>
+
+<style id="ssnohcp-v15-running-total-width">
+/* SSnoHCP V1.5: same default width as each blue hole-score box. The sizing
+   pass may widen this panel only if the total needs room; height unchanged. */
+#scorecardView .score-table-head .ssnohcp-running-panel-v10{
+  width:min(96%,calc(var(--v5-score-box,58px) * 1.5))!important;
+  max-width:96%!important;
+}
+</style>
+
+
 <script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.1';window.SSNOHCP_BUILD_KEY='1.1-Q8H4CP';</script>
 </head>
 
@@ -16268,7 +16281,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 
         <button id="testLogHotspot" class="home-event-test-hotspot" type="button" aria-label="Open test log">
           <span id="homeEventInfoV2255" class="home-event-info"></span>
-          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.4</span></span>
+          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.5</span></span>
         </button>
         <script>
           (function () {
@@ -27195,6 +27208,33 @@ let scoreTimingDetail =
       const panelV10 = running && running.querySelector('.ssnohcp-running-panel-v10');
       const grossV10 = panelV10 && panelV10.querySelector('.ssnohcp-score-v10');
       if (panelV10 && grossV10) {
+        /* SSnoHCP V1.5: align the gray running-total box with the blue
+           score-button width. An unusually long total can extend toward the
+           score column's edges, but ordinary totals get no extra width. */
+        const maxGrossPanelWidthV15 = running.clientWidth * .96;
+        const blueScoreWidthV15 = scoreBox * 1.5;
+        const normalGrossPanelWidthV15 = Math.min(
+          maxGrossPanelWidthV15, blueScoreWidthV15
+        );
+        const grossTextStyleV15 = getComputedStyle(grossV10);
+        const textCanvasV15 = document.createElement('canvas');
+        const textContextV15 = textCanvasV15.getContext('2d');
+        let desiredGrossPanelWidthV15 = normalGrossPanelWidthV15;
+        if (textContextV15) {
+          textContextV15.font = '800 ' + (headerHeight * .60) +
+            'px ' + (grossTextStyleV15.fontFamily || 'sans-serif');
+          const totalTextV15 = (grossV10.textContent || 'E').trim();
+          const textWidthV15 = textContextV15.measureText(totalTextV15).width;
+          /* The fitting helper reserves 8% padding on each side. */
+          const requiredWidthV15 = (textWidthV15 + 2) / .84;
+          desiredGrossPanelWidthV15 = Math.max(
+            normalGrossPanelWidthV15,
+            Math.min(maxGrossPanelWidthV15, requiredWidthV15)
+          );
+        }
+        panelV10.style.setProperty(
+          'width', desiredGrossPanelWidthV15.toFixed(3) + 'px', 'important'
+        );
         fitTextToBoxV5(panelV10, grossV10, headerHeight * .60, .001, {
           horizontalPad: Math.max(6, panelV10.clientWidth * .08),
           verticalPad: Math.max(2, panelV10.clientHeight * .08),

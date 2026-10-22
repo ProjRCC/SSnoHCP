@@ -1,3 +1,5 @@
+<!-- SSnoHCP V1.12 TEST — exact V1.11 BUILD 1.11-Z7H4CP donor. Every CSS drop shadow uses one clearly visible 0 5px 16px rgba(0,0,0,.28) shadow. Preserve gold focus rings/inset selections and shadow:none pressed/flat states. No geometry, scoring, auth, names, routing, Worker or manifest changes. HOME/runtime/build labels updated. -->
+<!-- SSnoHCP | BASE KEY: 1.11-Z7H4CP | BUILD KEY: 1.12-Q8H4CP -->
 <!-- SSnoHCP V1.11 TEST — donor is exact V1.10 GOLDEN BUILD 1.10-Y8H4CP. Reuses the existing very subtle white-page shadow (0 2px 10px rgba(0,0,0,.05)) on visible buttons and whole table surfaces. No dimensions, borders, scoring, routing, Worker, PWA manifest, or counterpart SSHCP changes. HOME/runtime/build labels updated. -->
 <!-- SSnoHCP | BASE KEY: 1.10-Y8H4CP | BUILD KEY: 1.11-Z7H4CP -->
 <!-- SSnoHCP V1.10 TEST — exact SSnoHCP V1.8 (1.8-W7H4CP) donor. Scorecard HOLE numbers enforce weight 700 at original size; leaderboard THRU completed-hole numerals use weight 500 and font-size 50% of actual leaderboard row height. HOME/runtime/build version updated. No other layout, scoring, Worker, manifest, or routing changes. -->
@@ -2962,7 +2964,7 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
 .home-scorecard-arrow{position:relative;border-left:1px solid rgba(255,255,255,.28);font-size:0;}
 .home-scorecard-arrow::after{content:"";position:absolute;left:50%;top:54%;width:11px;height:11px;transform:translate(-50%,-35%) rotate(45deg);}
 .home-scorecard-main:active,.home-scorecard-arrow:active{filter:brightness(.9);}
-.home-team-dropup{position:absolute;left:0;right:0;bottom:calc(100% + 7px);z-index:80;display:none;overflow-y:auto;padding:6px;border:2px solid var(--gold);border-radius:9px;background:#fafafa;box-shadow:0 -8px 28px rgba(255,255,255,.48);}
+.home-team-dropup{position:absolute;left:0;right:0;bottom:calc(100% + 7px);z-index:80;display:none;overflow-y:auto;padding:6px;border:2px solid var(--gold);border-radius:9px;background:#fafafa;box-shadow:var(--ssnohcp-unified-shadow-v112);}
 .home-team-dropup.open{display:block;}
 .home-team-option{display:block;width:100%;min-height:48px;padding:9px 12px;border:0;border-bottom:1px solid #ccc;background:#fafafa;color:#000;text-align:center;font-size:18px;font-weight:600;}
 .home-team-option:last-child{border-bottom:0;}
@@ -2997,7 +2999,7 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
 .score-team-select-button{position:relative;width:100%;text-align:center;appearance:none;-webkit-appearance:none;padding-right:42px;}
 .score-team-select-button::after{}
 .score-team-select-button.has-team{}
-.score-team-dropdown{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:120;display:none;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px;border:2px solid var(--gold);border-radius:9px;background:#fafafa;box-shadow:0 8px 28px rgba(255,255,255,.58);}
+.score-team-dropdown{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:120;display:none;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px;border:2px solid var(--gold);border-radius:9px;background:#fafafa;box-shadow:var(--ssnohcp-unified-shadow-v112);}
 .score-team-dropdown.open{display:block;}
 .score-team-option{font-size:18px;}
 .leader-row{}
@@ -4667,7 +4669,7 @@ body.score-team-menu-open .score-fixed-top{
 .passkey-team-select-wrap{position:relative;width:100%;margin:12px 0 0;}
 .passkey-team-button{position:relative;width:100%;height:46px;padding:0 50px 0 18px;border:5px solid var(--gold);border-radius:9px;background:#fff;color:#000;font-size:17px;font-weight:700;text-align:center;outline:none;box-sizing:border-box;-webkit-appearance:none;appearance:none;}
 .passkey-team-button::after{content:"";position:absolute;right:18px;top:50%;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid #000;transform:translateY(-35%);pointer-events:none;}
-.passkey-team-menu{display:none;position:fixed;z-index:7000;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px;border:2px solid var(--gold);border-radius:9px;background:#fff;box-shadow:0 8px 28px rgba(0,0,0,.16);box-sizing:border-box;}
+.passkey-team-menu{display:none;position:fixed;z-index:7000;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:6px;border:2px solid var(--gold);border-radius:9px;background:#fff;box-shadow:var(--ssnohcp-unified-shadow-v112);box-sizing:border-box;}
 .passkey-team-menu.open{display:block;}
 .passkey-team-option{display:block;width:100%;min-height:46px;padding:8px 12px;border:0;border-bottom:1px solid #ccc;background:#fff;color:#000;text-align:center;font-size:17px;font-weight:700;-webkit-appearance:none;appearance:none;}
 .passkey-team-option:last-child{border-bottom:0;}
@@ -8546,7 +8548,7 @@ html.sshcp-master-picker-v2326 .qr-welcome-team-v170 {
   position:absolute; left:0; top:calc(100% + 7px); z-index:3;
   width:100%; max-height:min(42dvh,390px); overflow-y:auto;
   box-sizing:border-box; border:3px solid var(--accent);
-  border-radius:9px; background:#fff; box-shadow:0 7px 18px rgba(0,0,0,.16);
+  border-radius:9px; background:#fff; box-shadow:var(--ssnohcp-unified-shadow-v112);
   overscroll-behavior:contain;
 }
 .sshcp-event-options-v2327[hidden] { display:none!important; }
@@ -9576,7 +9578,7 @@ body option{
   border-radius:12px!important;
   background:rgba(58,58,58,.94)!important;
   color:#fff!important;
-  box-shadow:0 8px 24px rgba(0,0,0,.28)!important;
+  box-shadow:var(--ssnohcp-unified-shadow-v112) !important;
   -webkit-backdrop-filter:blur(7px) brightness(.78)!important;
   backdrop-filter:blur(7px) brightness(.78)!important;
 }
@@ -10995,7 +10997,7 @@ body.team-qr-locked #scorecardView .score-table-head{
 }
 
 .modal-overlay.geek-mode-v180 .geek-filter-popover-v186{
-  box-shadow:0 8px 24px rgba(0,0,0,.22)!important;
+  box-shadow:var(--ssnohcp-unified-shadow-v112) !important;
 }
 .modal-overlay.geek-mode-v180 .geek-filter-grid-v186{
   grid-template-rows:
@@ -12795,7 +12797,7 @@ body.team-info-open-v2032{
   padding:var(--v2074-menu-panel-pad,8px)!important;
   border-width:var(--v2074-menu-panel-border,2px)!important;
   border-radius:var(--v2074-menu-panel-radius,14px)!important;
-  box-shadow:0 var(--v2074-menu-shadow-y,8px) var(--v2074-menu-shadow-blur,24px) rgba(0,0,0,.18)!important;
+  box-shadow:var(--ssnohcp-unified-shadow-v112) !important;
 }
 .home-menu-panel-v2054.open{
   gap:var(--v2074-menu-panel-gap,7px)!important;
@@ -13369,7 +13371,7 @@ html.sshcp-tournament-complete #homeView #homeLeaderboardButton.home-tiebreak-v2
 .modal-overlay.game-mode-results-v2026 .modal-box,
 .modal-overlay.skins-results-v1627 .modal-box,
 .modal-overlay.quick-guide .modal-box{
-  box-shadow:0 2px 10px rgba(0,0,0,.05)!important;
+  box-shadow:var(--ssnohcp-unified-shadow-v112) !important;
 }
 </style>
 
@@ -13488,7 +13490,7 @@ html.sshcp-tournament-complete #homeView #homeLeaderboardButton.home-tiebreak-v2
   border:0!important;
   border-radius:calc(16px * var(--v2074-utility-scale,1))!important;
   background:#fff!important;
-  box-shadow:0 5px 18px rgba(0,0,0,.10)!important;
+  box-shadow:var(--ssnohcp-unified-shadow-v112) !important;
   text-align:center!important;
 }
 /* V21.63 — contextual cards are vertically centered. Short cards get extra internal
@@ -13935,9 +13937,7 @@ html.sshcp-tournament-complete #homeView #homeLeaderboardButton.home-tiebreak-v2
   border-radius:calc(16px * var(--v2074-utility-scale,1))!important;
   background:#fff!important;
   box-shadow:
-    0 calc(4px * var(--v2074-utility-scale,1))
-    calc(14px * var(--v2074-utility-scale,1))
-    rgba(0,0,0,.14)!important;
+    var(--ssnohcp-unified-shadow-v112) !important;
   text-align:center!important;
 }
 .geek-download-status-title-v2278{
@@ -14071,9 +14071,7 @@ html.sshcp-tournament-complete #homeView #homeLeaderboardButton.home-tiebreak-v2
   border-radius:calc(16px * var(--v2074-utility-scale,1))!important;
   background:#fff!important;
   box-shadow:
-    0 calc(4px * var(--v2074-utility-scale,1))
-    calc(14px * var(--v2074-utility-scale,1))
-    rgba(0,0,0,.14)!important;
+    var(--ssnohcp-unified-shadow-v112) !important;
   text-align:center!important;
 }
 .geek-pdf-paper-title-v2281{
@@ -14225,7 +14223,7 @@ html.sshcp-tournament-complete #homeView #homeLeaderboardButton.home-tiebreak-v2
 .modal-overlay.quick-guide .modal-box,
 .tips-card-v2154{
   background:#ffffff!important;
-  box-shadow:0 calc(4px * var(--v2074-utility-scale,1)) calc(14px * var(--v2074-utility-scale,1)) rgba(0,0,0,.14)!important;
+  box-shadow:var(--ssnohcp-unified-shadow-v112) !important;
 }
 /* Contextual Tips card: title, then the shared preference control, then instructional copy. */
 .tips-card-v2154 .tips-title-v2154{
@@ -14718,7 +14716,7 @@ html.sshcp-pre-geek-transition-v2220 body::after{
   padding:10px!important;
   border-radius:12px!important;
   background:var(--sshcp-gray-7-v1851,#444)!important;
-  box-shadow:0 8px 24px rgba(0,0,0,.28)!important;
+  box-shadow:var(--ssnohcp-unified-shadow-v112) !important;
 }
 .geek-all-teams-filter-grid-v2216{
   display:grid!important;
@@ -14804,7 +14802,7 @@ html.sshcp-pre-geek-transition-v2220 body::after{
   padding:max(5px,env(safe-area-inset-top)) var(--sshcp-shared-gutter-v2123,16px) max(5px,env(safe-area-inset-bottom))!important;
   border-radius:12px!important;
   background:#fff!important;
-  box-shadow:0 2px 10px rgba(0,0,0,.05)!important;
+  box-shadow:var(--ssnohcp-unified-shadow-v112) !important;
   overflow:hidden!important;
 }
 
@@ -14924,7 +14922,7 @@ html.sshcp-pre-geek-transition-v2220 body::after{
   font-weight:700!important;
   line-height:1.08!important;
   letter-spacing:.45px!important;
-  box-shadow:0 2px 10px rgba(0,0,0,.05)!important;
+  box-shadow:var(--ssnohcp-unified-shadow-v112) !important;
   opacity:0;
   transition:none!important;
 }
@@ -15585,7 +15583,7 @@ html.sshcp-geek-all-teams-v2216 .geek-all-teams-row-v2216.header-v2216
   border-radius:9px!important;
   background:#fff!important;
   padding:0!important;
-  box-shadow:0 7px 18px rgba(0,0,0,.16)!important;
+  box-shadow:var(--ssnohcp-unified-shadow-v112) !important;
 }
 .sshcp-event-option-v2327,
 #homeView .home-team-option,
@@ -15734,7 +15732,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
  box-sizing:border-box!important;
  border:0!important;
  border-radius:18px!important;
- box-shadow:0 2px 10px rgba(0,0,0,.05)!important;
+ box-shadow:var(--ssnohcp-unified-shadow-v112) !important;
  background:#fff!important
 }
 .modal-overlay.score-save-warning .modal-title{
@@ -15822,7 +15820,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
   border-radius:clamp(7px,3vw,18px)!important;
   background:#fff!important;
   opacity:1!important;
-  box-shadow:0 7px 24px rgba(0,0,0,.14)!important;
+  box-shadow:var(--ssnohcp-unified-shadow-v112) !important;
   font-family:"Oswald",Arial,sans-serif!important;
   text-align:center!important;
 }
@@ -15894,7 +15892,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
   border:0!important;
   border-radius:calc(18px * var(--v221-global-scale,1))!important;
   background:#fff!important;
-  box-shadow:0 2px 10px rgba(0,0,0,.05)!important;
+  box-shadow:var(--ssnohcp-unified-shadow-v112) !important;
   overscroll-behavior:contain!important;
 }
 /* The three controls retain their functions, heights and blue styling; only
@@ -15964,8 +15962,8 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
    opacity transitions, user interaction, element spacing or internal scrolling. */
 :root {
   --sshcp-popup-backdrop-v2377: var(--sshcp-gray-3-v1850, #e8e8e8);
-  --sshcp-page-shadow-v2377: 0 2px 10px rgba(0,0,0,.05);
-  --sshcp-info-shadow-v2377: 0 8px 26px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.10);
+  --sshcp-page-shadow-v2377: var(--ssnohcp-unified-shadow-v112);
+  --sshcp-info-shadow-v2377: var(--ssnohcp-unified-shadow-v112);
 }
 /* This targets modal SURFACES, not dropdowns, page-transition curtains,
    the QR WELCOME splash, or internal FILTERS overlays. The single #modalOverlay
@@ -15990,7 +15988,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 .geek-pdf-paper-v2281 .geek-pdf-paper-card-v2281,
 .teams-popup-overlay .teams-popup-box,
 #teamInfoOverlayV2032 .team-info-shell-v2032 {
-  box-shadow: var(--sshcp-info-shadow-v2377) !important;
+  box-shadow: var(--ssnohcp-unified-shadow-v112) !important;
 }
 /* PAGE — the four full-size reading/results surfaces. Including the SKINS
    stand-alone results page under GAME; GEEK DETAIL is explicitly excluded. */
@@ -16002,7 +16000,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
   .skins-results-v1627
 ) .modal-box,
 .geek-all-teams-view-v2216 .geek-all-teams-popup-v2220 {
-  box-shadow: var(--sshcp-page-shadow-v2377) !important;
+  box-shadow: var(--ssnohcp-unified-shadow-v112) !important;
 }
 </style>
 <style id="sshcp-v2378-confirmations-guide">
@@ -16162,7 +16160,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 </style>
 
 
-<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.11';window.SSNOHCP_BUILD_KEY='1.11-Z7H4CP';</script>
+<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.12';window.SSNOHCP_BUILD_KEY='1.12-Q8H4CP';</script>
 <style id="ssnohcp-v110-leaderboard-thru-and-scorecard-hole">
 /* V1.10: HOLE numbers on scorecard remain 700 at their original size. */
 #scorecardView .hole-cell .hole-number {
@@ -16183,7 +16181,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
    the white PAGE modal family; no new depth/color formula introduced.
    Drop shadow belongs to the whole visual table, not its individual cells.
    The split HOME scorecard action is one joined surface, not two buttons. */
-:root { --ssnohcp-surface-shadow-v111: var(--sshcp-page-shadow-v2377, 0 2px 10px rgba(0,0,0,.05)); }
+:root { --ssnohcp-unified-shadow-v112: 0 5px 16px rgba(0,0,0,.28); --ssnohcp-surface-shadow-v111: var(--ssnohcp-unified-shadow-v112); }
 
 /* Solid action surfaces (not invisible diagnostic hotspots or bare X icons).
    Leave pressed-state shading to the existing interaction CSS. */
@@ -16191,7 +16189,7 @@ html body button:not(:active):not(.home-event-test-hotspot):not(.home-scorecard-
 html body :is(#homeView, #scorecardView, #leaderboardView, #testLogView, #modalOverlay, #scoreEntryOverlay, #qrWelcomeOverlayV170, #teamsPopupOverlay, #teamInfoOverlayV2032) button:not(:active):not(.home-event-test-hotspot):not(.home-scorecard-main):not(.home-scorecard-arrow):not(.modal-close-x),
 #homeView .home-scorecard-split,
 #scorecardView .score-button:not(:active) {
-  box-shadow: var(--ssnohcp-surface-shadow-v111) !important;
+  box-shadow: var(--ssnohcp-unified-shadow-v112) !important;
 }
 
 /* Two continuous table designs each have a fixed header + scroll body.
@@ -16208,17 +16206,23 @@ html body :is(#homeView, #scorecardView, #leaderboardView, #testLogView, #modalO
 .modal-overlay .skins-table-v1627,
 .modal-overlay .tournament-summary-grid,
 .modal-overlay .tournament-summary-remaining {
-  box-shadow: var(--ssnohcp-surface-shadow-v111) !important;
+  box-shadow: var(--ssnohcp-unified-shadow-v112) !important;
 }
 /* HOME primary and CC utility controls have legacy double-ID resets. */
 html:not(.sshcp-tournament-complete) #homeView #homeLeaderboardButton:not(:active),
 html.sshcp-tournament-complete #homeView #homeLeaderboardButton:not(:active),
 #testLogView #testLogResetButton:not(:active),
 #testLogView #testCopyLogButton:not(:active) {
-  box-shadow: var(--ssnohcp-surface-shadow-v111) !important;
+  box-shadow: var(--ssnohcp-unified-shadow-v112) !important;
 }
 </style>
 
+
+<style id="ssnohcp-v112-global-shadow-contract">
+/* All visible drop shadows in V1.12 use the same unified value;
+   other states (focus rings, inset gold markers, flat/pressed surfaces) are deliberate non-drop effects. */
+:root { --ssnohcp-unified-shadow-v112: 0 5px 16px rgba(0,0,0,.28); }
+</style>
 </head>
 
 
@@ -16347,7 +16351,7 @@ html.sshcp-tournament-complete #homeView #homeLeaderboardButton:not(:active),
 
         <button id="testLogHotspot" class="home-event-test-hotspot" type="button" aria-label="Open test log">
           <span id="homeEventInfoV2255" class="home-event-info"></span>
-          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.11</span></span>
+          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.12</span></span>
         </button>
         <script>
           (function () {

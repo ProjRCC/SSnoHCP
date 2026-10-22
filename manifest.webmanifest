@@ -1,6 +1,9 @@
 {
-  "name": "SimpleScramble",
-  "short_name": "SimpleScramble",
+  "name": "SimpleScramble No Handicap",
+  "short_name": "SSnoHCP",
+  "id": "/SSnoHCP/",
+  "start_url": "/SSnoHCP/?event=SSnoHCP",
+  "scope": "/SSnoHCP/",
   "display": "standalone",
   "background_color": "#133362",
   "theme_color": "#133362",

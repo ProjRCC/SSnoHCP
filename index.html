@@ -1,3 +1,5 @@
+<!-- SSnoHCP V1.1 TEST — PWA identity/isolation correction only from exact SSnoHCP V1.0 donor. Give SSnoHCP its own manifest id, start_url and path scope; distinguish browser/Android installation title, application metadata, and absolute manifest reference. Preserve scorecard, leaderboard THRU, summary, auth, score saving, backend, and SSHCP resources. -->
+<!-- SSnoHCP | BASE KEY: 1.0-N7H4CP | BUILD KEY: 1.1-Q8H4CP -->
 <!-- SSnoHCP V1.0 TEST — standalone no-handicap frontend fork of verified SSHCP V23.91-Q7M4VX. Single bold gross-relative score; 9/49/20/22 Leaderboard with last sequential shotgun hole in THRU, hole-count progress, gross TOTAL; Summary gross score language and intact result hierarchy/tiebreak; storage isolated per SSnoHCP event. No Worker/Sheets edited. Event resolver for new spreadsheet NOT verified. -->
 <!-- SSnoHCP | BASE KEY: 23.91-Q7M4VX | BUILD KEY: 1.0-N7H4CP -->
 <!-- SSHCP V23.91 TEST — exact V23.90-N8Q4VX donor. Scorecard double-notation presentation only: tighten OUTER eagle-circle/double-bogey-square frames from 102% to 92% of unchanged blue score-box height, and give BOTH double-symbol strokes 75% of the established single-symbol border weight. Preserve score numerals, original inner-circle/inner-square dimensions, single-symbol marks, colors, Scorecard/header geometry, scoring, authorization, navigation, GEEK, SKINS, Worker and Sheets unchanged. -->
@@ -1197,7 +1199,7 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
          if (masterPickerV2326) return await new Promise(function() {}); // no event APIs behind chooser
          if (!validV2318) throw new Error('Open this page using ?event=EVENTKEY (a valid event key).');
          if (['SSHCP26','ROTB26'].includes(eventV2318.toUpperCase()))
-           throw new Error('SSnoHCP V1.0 cannot use an SSHCP/ROTB tournament event. New event resolver connection is required.');
+           throw new Error('SSnoHCP V1.1 cannot use an SSHCP/ROTB tournament event. New event resolver connection is required.');
         if (fastTeamReturnV2338 && fastPresentationV2338) {
           startupTraceV2337.eventConfigMs = 0;
           window.SSHCP_EVENT.DETAILS = fastPresentationV2338.longName;
@@ -1652,12 +1654,12 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
 
   <!-- SSHCP V20.20 — hidden PWA packaging + Android standalone HOME reload-height workaround.
        Normal QR/browser flow remains unchanged; no install UI is rendered by SSHCP. -->
-  <meta name="application-name" content="SimpleScramble">
+  <meta name="application-name" content="SSnoHCP">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="SimpleScramble">
+  <meta name="apple-mobile-web-app-title" content="SSnoHCP">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="manifest" href="/SSnoHCP/manifest.webmanifest?v=1.1">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180.png">
   <script>
@@ -1666,7 +1668,7 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
     });
   </script>
 
-  <title>ROTB 2026</title>
+  <title>SSnoHCP — SimpleScramble</title>
 
   <!-- SIMPLE SCRAMBLE HANDICAP — SSHCP V15.13b -->
 
@@ -16114,7 +16116,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
   overflow:visible!important;
 }
 </style>
-<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.0';window.SSNOHCP_BUILD_KEY='1.0-N7H4CP';</script>
+<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.1';window.SSNOHCP_BUILD_KEY='1.1-Q8H4CP';</script>
 </head>
 
 
@@ -16243,7 +16245,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 
         <button id="testLogHotspot" class="home-event-test-hotspot" type="button" aria-label="Open test log">
           <span id="homeEventInfoV2255" class="home-event-info"></span>
-          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.0</span></span>
+          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.1</span></span>
         </button>
         <script>
           (function () {

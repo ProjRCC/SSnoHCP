@@ -1,3 +1,5 @@
+<!-- SSnoHCP V1.11 TEST — donor is exact V1.10 GOLDEN BUILD 1.10-Y8H4CP. Reuses the existing very subtle white-page shadow (0 2px 10px rgba(0,0,0,.05)) on visible buttons and whole table surfaces. No dimensions, borders, scoring, routing, Worker, PWA manifest, or counterpart SSHCP changes. HOME/runtime/build labels updated. -->
+<!-- SSnoHCP | BASE KEY: 1.10-Y8H4CP | BUILD KEY: 1.11-Z7H4CP -->
 <!-- SSnoHCP V1.10 TEST — exact SSnoHCP V1.8 (1.8-W7H4CP) donor. Scorecard HOLE numbers enforce weight 700 at original size; leaderboard THRU completed-hole numerals use weight 500 and font-size 50% of actual leaderboard row height. HOME/runtime/build version updated. No other layout, scoring, Worker, manifest, or routing changes. -->
 <!-- SSnoHCP | BASE KEY: 1.8-W7H4CP | BUILD KEY: 1.10-Y8H4CP -->
 <!-- SSnoHCP V1.8 TEST — Correct target: LIVE LEADERBOARD THRU hole numerals now Oswald regular (400), not heavy (800). Undo unintended V1.7 scorecard HOLE weight override; preserve original scorecard styling, running-total box, other leaderboard columns, one-app PWA routing, score logic and Worker. HOME and runtime identity updated to V1.8. Exact donor SSnoHCP V1.7 / BUILD 1.7-V9H4CP. -->
@@ -16160,7 +16162,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 </style>
 
 
-<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.10';window.SSNOHCP_BUILD_KEY='1.10-Y8H4CP';</script>
+<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.11';window.SSNOHCP_BUILD_KEY='1.11-Z7H4CP';</script>
 <style id="ssnohcp-v110-leaderboard-thru-and-scorecard-hole">
 /* V1.10: HOLE numbers on scorecard remain 700 at their original size. */
 #scorecardView .hole-cell .hole-number {
@@ -16173,6 +16175,47 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 #leaderboardView #leaderRows .leader-through-value.ssnohcp-thru-value-v10.has-progress {
   font-size: calc(var(--leader-row-height, 56px) * 0.5) !important;
   font-weight: 500 !important;
+}
+</style>
+
+<style id="ssnohcp-v111-subtle-surface-shadows">
+/* V1.11 visual-only test. Reuse the EXACT soft shadow already used on
+   the white PAGE modal family; no new depth/color formula introduced.
+   Drop shadow belongs to the whole visual table, not its individual cells.
+   The split HOME scorecard action is one joined surface, not two buttons. */
+:root { --ssnohcp-surface-shadow-v111: var(--sshcp-page-shadow-v2377, 0 2px 10px rgba(0,0,0,.05)); }
+
+/* Solid action surfaces (not invisible diagnostic hotspots or bare X icons).
+   Leave pressed-state shading to the existing interaction CSS. */
+html body button:not(:active):not(.home-event-test-hotspot):not(.home-scorecard-main):not(.home-scorecard-arrow):not(.modal-close-x),
+html body :is(#homeView, #scorecardView, #leaderboardView, #testLogView, #modalOverlay, #scoreEntryOverlay, #qrWelcomeOverlayV170, #teamsPopupOverlay, #teamInfoOverlayV2032) button:not(:active):not(.home-event-test-hotspot):not(.home-scorecard-main):not(.home-scorecard-arrow):not(.modal-close-x),
+#homeView .home-scorecard-split,
+#scorecardView .score-button:not(:active) {
+  box-shadow: var(--ssnohcp-surface-shadow-v111) !important;
+}
+
+/* Two continuous table designs each have a fixed header + scroll body.
+   Apply the faint depth only to their OUTER surfaces, not the data cells. */
+#scorecardView .score-table-head,
+#scorecardView .score-scroll,
+#leaderboardView .leader-table-head,
+#leaderboardView .leader-content,
+#testLogView .test-log-table,
+.teams-popup-overlay .teams-popup-table-frame,
+.modal-overlay .geek-table-shell-v180,
+.modal-overlay .geek-all-teams-table-v2216,
+.modal-overlay .game-mode-table-v2026,
+.modal-overlay .skins-table-v1627,
+.modal-overlay .tournament-summary-grid,
+.modal-overlay .tournament-summary-remaining {
+  box-shadow: var(--ssnohcp-surface-shadow-v111) !important;
+}
+/* HOME primary and CC utility controls have legacy double-ID resets. */
+html:not(.sshcp-tournament-complete) #homeView #homeLeaderboardButton:not(:active),
+html.sshcp-tournament-complete #homeView #homeLeaderboardButton:not(:active),
+#testLogView #testLogResetButton:not(:active),
+#testLogView #testCopyLogButton:not(:active) {
+  box-shadow: var(--ssnohcp-surface-shadow-v111) !important;
 }
 </style>
 
@@ -16304,7 +16347,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 
         <button id="testLogHotspot" class="home-event-test-hotspot" type="button" aria-label="Open test log">
           <span id="homeEventInfoV2255" class="home-event-info"></span>
-          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.10</span></span>
+          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.11</span></span>
         </button>
         <script>
           (function () {

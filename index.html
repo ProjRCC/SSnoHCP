@@ -1,5 +1,11 @@
-<!-- SSHCP V23.88 TEST — V23.87-M7Q4VX GOLDEN donor. Quick Guide width 95vw capped 900 CSS px; suppress Scorecard MAX ZOOM in landscape; remove demonstrably uncalled legacy warning helpers; clarify diagnostic formula. No scoring, Worker or other layout changes. -->
-<!-- SSHCP | BASE KEY: 23.87-M7Q4VX | BUILD KEY: 23.88-Q7M4VX -->
+<!-- SSnoHCP V1.0 TEST — standalone no-handicap frontend fork of verified SSHCP V23.91-Q7M4VX. Single bold gross-relative score; 9/49/20/22 Leaderboard with last sequential shotgun hole in THRU, hole-count progress, gross TOTAL; Summary gross score language and intact result hierarchy/tiebreak; storage isolated per SSnoHCP event. No Worker/Sheets edited. Event resolver for new spreadsheet NOT verified. -->
+<!-- SSnoHCP | BASE KEY: 23.91-Q7M4VX | BUILD KEY: 1.0-N7H4CP -->
+<!-- SSHCP V23.91 TEST — exact V23.90-N8Q4VX donor. Scorecard double-notation presentation only: tighten OUTER eagle-circle/double-bogey-square frames from 102% to 92% of unchanged blue score-box height, and give BOTH double-symbol strokes 75% of the established single-symbol border weight. Preserve score numerals, original inner-circle/inner-square dimensions, single-symbol marks, colors, Scorecard/header geometry, scoring, authorization, navigation, GEEK, SKINS, Worker and Sheets unchanged. -->
+<!-- SSHCP | BASE KEY: 23.90-N8Q4VX | BUILD KEY: 23.91-Q7M4VX -->
+<!-- SSHCP V23.90 TEST — exact V23.89-R7M4QX donor. Scorecard running totals ONLY: one centered Gray 3 panel at 80% of SCORE column width and 80% of header height. Gross regular / NET bold separated by a vertical rule at least as tall as the numerals. Both scores centered in equal grid halves, giving balanced outer and inner spacing. Typography targets 60% of header height and fits both scores to their half-cells. Keep Gray 5 outer header, HOLE/PAR/YARDS/SCORE 20/15/30/35, nine-row geometry, all scoring, refresh, authorization, GEEK, SKINS, Worker and Sheets unchanged. -->
+<!-- SSHCP | BASE KEY: 23.89-R7M4QX | BUILD KEY: 23.90-N8Q4VX -->
+<!-- SSHCP V23.89 TEST — exact corrected V23.88-Q7M4VX donor. Scorecard-only presentation: preserve Gray 5 header and 20/15/30/35 tracks; replace white running score boxes and SCORE label with one Gray 2 inset panel capped at 85% header height. Gross normal / Net bold with slash, values target 65% header height and shrink together to fit. Scoring/data/Worker/other screens unchanged. -->
+<!-- SSHCP | BASE KEY: 23.88-Q7M4VX | BUILD KEY: 23.89-R7M4QX -->
 <!-- SSHCP V23.87 GOLDEN — exact V23.86-R8Q4MX GOLDEN donor. Global height multiplier uses VIEW/innerHeight (not fluctuating visualViewport height); preserve visual viewport for keyboard and popup placement. Width multiplier, Scorecard behavior and Worker unchanged. -->
 <!-- SSHCP V23.86 TEST — V23.85 donor. Landscape ALL TEAMS detail only: fit its typography and vertical gaps to the real short WEB viewport, preserve top/bottom clearance and visible title/CLOSE. No portrait, table, score or Worker changes. -->
 <!-- SSHCP V23.85 TEST — V23.82 donor; CC diagnostics three independent lines and no outer frame. -->
@@ -698,9 +704,9 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
           This bootstrap is the sole event-route decision, before namespace creation.
           Scanned QR URLs win, fresh chooser selections win, and otherwise an
           installed PWA reopens its last genuinely authorized event. */
-       var verifiedEventKeyV2319 = 'SimpleScramble:lastVerifiedEvent:V2319';
-       var authorizedEventKeyV2335 = 'SimpleScramble:lastAuthorizedEvent:V2335';
-       var masterIntentKeyV2336 = 'SimpleScramble:pendingMasterEvent:V2336';
+       var verifiedEventKeyV2319 = 'SSnoHCP:lastVerifiedEvent:V1';
+       var authorizedEventKeyV2335 = 'SSnoHCP:lastAuthorizedEvent:V1';
+       var masterIntentKeyV2336 = 'SSnoHCP:pendingMasterEvent:V1';
        var validEventV2336 = /^[A-Za-z0-9][A-Za-z0-9_-]{1,39}$/;
        var hasIncomingQrV2336 = queryV2318.has('passkey') || queryV2318.has('key');
        var requestedMasterEventV2336 = String(queryV2318.get('event') || '');
@@ -711,7 +717,7 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
          window.localStorage.removeItem(masterIntentKeyV2336); // consume once
          if (intentRawV2336) freshMasterIntentV2336 = JSON.parse(intentRawV2336);
          // A discarded V23.35 marker can never reauthorize a future launch.
-         window.sessionStorage.removeItem('SimpleScramble:pendingMasterEvent:V2335');
+         window.sessionStorage.removeItem('SSnoHCP:pendingMasterEvent:V1');
        } catch (_) {}
        var masterEntryV2326 = !!(
          !hasIncomingQrV2336 && queryV2318.get('masterEntrance') === '1' &&
@@ -736,7 +742,7 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
          var key = String(candidate || '');
          if (!validEventV2336.test(key)) return '';
          try {
-           var prefix = 'GolfAPP:' + key + ':';
+           var prefix = 'GolfAPP:SSnoHCP:' + key + ':';
            var role = window.localStorage.getItem(prefix + 'sshcpQrRole');
            var passkey = window.localStorage.getItem(prefix + 'sshcpQrPasskey');
            return (passkey && (role === 'QR' || role === 'MASTER')) ? key : '';
@@ -788,7 +794,7 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
            window.__sshcpResolveMasterHomeReadyV2329 = resolve;
          });
        }
-      var lastEventKeyV2319 = 'SimpleScramble:lastVerifiedEvent:V2319';
+      var lastEventKeyV2319 = 'SSnoHCP:lastVerifiedEvent:V1';
       var validEventKeyV2319 = /^[A-Za-z0-9][A-Za-z0-9_-]{1,39}$/;
       var eventV2318 = explicitEventV2319 ? String(queryV2318.get('event') || '').trim() : '';
       var restoredEventV2319 = false;
@@ -803,7 +809,7 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
         } catch (_) { /* Storage unavailable: continue with strict missing-event rejection. */ }
       }
       var validV2318 = validEventKeyV2319.test(eventV2318);
-      var namespaceV2318 = validV2318 ? 'GolfAPP:' + eventV2318 + ':' : null;
+      var namespaceV2318 = validV2318 ? 'GolfAPP:SSnoHCP:' + eventV2318 + ':' : null;
       window.GOLFAPP_EVENT_KEY = validV2318 ? eventV2318 : '';
       window.SSHCP_EVENT = { DETAILS:'', SHORT_NAME:'' };
       var nativeFetchV2318 = window.fetch.bind(window);
@@ -860,7 +866,7 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
         if (standaloneLaunchV2336 && validV2318 && !masterEntryV2326 &&
             !masterPickerV2326 && !forceMasterPickerV2336 &&
             !forceFreshPresentationV2365 &&
-            window.localStorage.getItem('SimpleScramble:lastAuthorizedEvent:V2335') === eventV2318 &&
+            window.localStorage.getItem('SSnoHCP:lastAuthorizedEvent:V1') === eventV2318 &&
             window.localStorage.getItem(namespaceV2318 + 'sshcpQrRole') === 'QR') {
           var savedTeamKeyV2338 = String(window.localStorage.getItem(namespaceV2318 + 'sshcpQrPasskey') || '').trim();
           var savedTeamIdV2338 = String(window.localStorage.getItem(namespaceV2318 + 'sshcpQrId') || '').trim();
@@ -1082,7 +1088,7 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
       var clearTargetHomeLogoV2365 = Promise.resolve();
       if (!fastTeamReturnV2338 && validV2318 && window.caches) {
         clearTargetHomeLogoV2365 = Promise.resolve().then(async function(){
-          var cache = await window.caches.open('GolfAPP:public-home-logos:V2365');
+          var cache = await window.caches.open('GolfAPP:SSnoHCP:public-home-logos:V1');
           var url = 'https://rotbtest.projrcc.workers.dev/?event=' +
             encodeURIComponent(eventV2318) + '&action=eventImage&kind=home';
           await cache.delete(url);
@@ -1092,7 +1098,7 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
         if (!window.caches || !url) return;
         Promise.resolve().then(async function(){
           await clearTargetHomeLogoV2365;
-          var cache = await window.caches.open('GolfAPP:public-home-logos:V2365');
+          var cache = await window.caches.open('GolfAPP:SSnoHCP:public-home-logos:V1');
           var response = await nativeFetchV2318(freshUrl || url, {cache:'no-store'});
           if (response.ok && /image\/jpeg/i.test(response.headers.get('content-type') || ''))
             await cache.put(url,response);
@@ -1101,7 +1107,7 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
       function restoreStableHomeLogoV2338(img,url) {
         if (!fastTeamReturnV2338 || !window.caches) { img.src=url; return; }
         Promise.resolve().then(async function(){
-          var cache = await window.caches.open('GolfAPP:public-home-logos:V2365');
+          var cache = await window.caches.open('GolfAPP:SSnoHCP:public-home-logos:V1');
           var response = await cache.match(url);
           /* A missing/invalid new cache must NEVER fall back to an old HTTP
              image after a fresh eventConfig was accepted. */
@@ -1190,6 +1196,8 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
       window.__sshcpEventBootstrapV2318 = (async function(){
          if (masterPickerV2326) return await new Promise(function() {}); // no event APIs behind chooser
          if (!validV2318) throw new Error('Open this page using ?event=EVENTKEY (a valid event key).');
+         if (['SSHCP26','ROTB26'].includes(eventV2318.toUpperCase()))
+           throw new Error('SSnoHCP V1.0 cannot use an SSHCP/ROTB tournament event. New event resolver connection is required.');
         if (fastTeamReturnV2338 && fastPresentationV2338) {
           startupTraceV2337.eventConfigMs = 0;
           window.SSHCP_EVENT.DETAILS = fastPresentationV2338.longName;
@@ -7499,11 +7507,17 @@ body.master-qr #scorecardView .score-team-select-button:focus{
   border-radius:1px;
 }
 
+/* V23.91: 75% of the existing single-circle/square line weight.
+   Width/height of the INNER symbol and the score/blue button are untouched. */
+#scorecardView .score-cell.notation-double-circle::before,
+#scorecardView .score-cell.notation-double-square::before{
+  border-width:clamp(1.125px,calc(var(--v5-score-box,58px) * .03375),2.25px);
+}
 #scorecardView .score-cell.notation-double-circle::after,
 #scorecardView .score-cell.notation-double-square::after{
-  width:calc(var(--v5-score-box,58px) * 1.02);
-  height:calc(var(--v5-score-box,58px) * 1.02);
-  border:clamp(1.2px,calc(var(--v5-score-box,58px) * .032),2.4px) solid var(--v162-notation-color);
+  width:calc(var(--v5-score-box,58px) * .92);
+  height:calc(var(--v5-score-box,58px) * .92);
+  border:clamp(1.125px,calc(var(--v5-score-box,58px) * .03375),2.25px) solid var(--v162-notation-color);
 }
 
 #scorecardView .score-cell.notation-bold-square::before{
@@ -15976,6 +15990,131 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
   overflow-wrap: normal !important;
 }
 </style>
+<style id="sshcp-v2390-scorecard-gross-net-panel">
+/* V23.90: reuse V23.89's original gross and net live score nodes.
+   Equal-width score cells with centered values give equal visual breathing
+   room at the OUTER panel edges and around the middle dividing rule.
+   The bar is a solid shape (rather than a font's short pipe glyph) and
+   is sized by the exact fitted numeral font to avoid a short separator. */
+#scorecardView .score-table-head > .score-running-header {
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:0!important;
+  min-width:0!important;
+}
+#scorecardView .score-table-head .score-running-panel-v2389 {
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 2px minmax(0,1fr)!important;
+  align-items:center!important;
+  justify-items:center!important;
+  column-gap:0!important;
+  row-gap:0!important;
+  width:80%!important;
+  max-width:80%!important;
+  min-width:0!important;
+  height:80%!important;
+  max-height:80%!important;
+  box-sizing:border-box!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:clamp(3px,calc(var(--v5-score-head-h,58px) * .12),8px)!important;
+  background:var(--sshcp-gray-3-v1850,#e0e0e0)!important;
+  box-shadow:none!important;
+  overflow:hidden!important;
+}
+#scorecardView .score-table-head .score-running-panel-v2389 > span {
+  display:block!important;
+  flex:none!important;
+  width:auto!important;
+  min-width:0!important;
+  max-width:none!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  outline:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  line-height:1!important;
+  white-space:nowrap!important;
+  letter-spacing:0!important;
+  overflow:visible!important;
+  transform:none!important;
+  -webkit-text-stroke:0 transparent!important;
+  paint-order:normal!important;
+  color:var(--sshcp-gray-8-v2102,#2c2c2c)!important;
+  -webkit-text-fill-color:var(--sshcp-gray-8-v2102,#2c2c2c)!important;
+}
+#scorecardView .score-table-head .score-running-panel-v2389 > .score-running-gross {
+  font-weight:400!important;
+}
+#scorecardView .score-table-head .score-running-panel-v2389 > .score-running-net {
+  font-weight:800!important;
+}
+#scorecardView .score-table-head .score-running-panel-v2389 > .score-running-separator-v2389 {
+  display:block!important;
+  width:2px!important;
+  min-width:2px!important;
+  max-width:2px!important;
+  height:var(--v2390-score-rule-height,25px)!important;
+  min-height:var(--v2390-score-rule-height,25px)!important;
+  max-height:var(--v2390-score-rule-height,25px)!important;
+  border:0!important;
+  border-radius:1px!important;
+  background:var(--sshcp-gray-8-v2102,#2c2c2c)!important;
+  font-size:0!important;
+  line-height:0!important;
+  overflow:hidden!important;
+}
+#scorecardView .score-table-head .score-running-panel-v2389 > .under-par {
+  color:#c93636!important;
+  -webkit-text-fill-color:#c93636!important;
+}
+</style>
+
+<style id="ssnohcp-v10-presentation">
+/* SSnoHCP V1.0: visually distinct front-end, inherited scoring engine untouched. */
+#scorecardView .score-table-head .ssnohcp-running-panel-v10{
+  background:var(--sshcp-gray-2-v1842,#f2f2f2)!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  grid-template-columns:none!important;width:80%!important;max-width:80%!important;
+  height:80%!important;max-height:80%!important;
+}
+#scorecardView .score-table-head .ssnohcp-running-panel-v10 .ssnohcp-score-v10{
+  display:block!important;font-weight:800!important;text-align:center!important;
+  max-width:94%!important;line-height:1!important;
+}
+#scorecardView .score-table-head .ssnohcp-running-panel-v10 .score-running-separator-v2389,
+#scorecardView .score-table-head .ssnohcp-running-panel-v10 .score-running-net{
+  display:none!important;
+}
+/* 4-column Leaderboard: PLACE 9 / TEAM 49 / THRU 20 / TOTAL 22 */
+#leaderboardView .leader-table-head,
+#leaderboardView .leader-row,
+#leaderboardView #leaderRows > .leader-row{
+  grid-template-columns:9% 49% 20% 22%!important;
+}
+#leaderboardView .leader-table-head > .ssnohcp-team-header-v10{
+  grid-column:1 / 3!important;
+}
+#leaderboardView #leaderRows .leader-through-cell{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  flex-direction:column!important;
+}
+#leaderboardView #leaderRows .leader-through-value.ssnohcp-thru-value-v10{
+  position:relative!important;display:block!important;width:auto!important;
+  height:auto!important;max-width:100%!important;
+  line-height:1!important;text-align:center!important;
+  font-weight:800!important;letter-spacing:0!important;
+  overflow:visible!important;
+}
+</style>
+<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.0';window.SSNOHCP_BUILD_KEY='1.0-N7H4CP';</script>
 </head>
 
 
@@ -16104,7 +16243,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 
         <button id="testLogHotspot" class="home-event-test-hotspot" type="button" aria-label="Open test log">
           <span id="homeEventInfoV2255" class="home-event-info"></span>
-          <span class="home-version-info"><span>SSHCP</span> <span class="home-version-number-v1835">V23.88</span></span>
+          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.0</span></span>
         </button>
         <script>
           (function () {
@@ -16235,9 +16374,11 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
           <div>YARDS</div>
 
           <div class="score-running-header">
-            <span id="scoreRunningGross" class="score-running-gross">E</span>
-            <span>SCORE</span>
-            <span id="scoreRunningNet" class="score-running-net">E</span>
+            <div class="score-running-panel-v2389 ssnohcp-running-panel-v10" aria-label="Gross score relative to par">
+              <span id="scoreRunningGross" class="score-running-gross ssnohcp-score-v10">E</span>
+              <span class="score-running-separator-v2389" aria-hidden="true"></span>
+              <span id="scoreRunningNet" class="score-running-net">E</span>
+            </div>
           </div>
 
         </div>
@@ -16399,9 +16540,9 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 
       <div class="leader-table-head">
 
-        <div class="leader-team-hcp-header-v2269">TEAM / HCP</div>
+        <div class="leader-team-hcp-header-v2269 ssnohcp-team-header-v10">TEAM</div>
 
-        <div>ROUND</div>
+        <div>THRU</div>
 
         <div>TOTAL</div>
 
@@ -18278,7 +18419,7 @@ let scoreTimingDetail =
       /* V23.35 — remember only a non-secret event ID after verified auth.
          Required to restore the correct event from a stale Android PWA launcher. */
       if ((data.role === 'QR' || data.role === 'MASTER') && window.GOLFAPP_EVENT_KEY) {
-        try { window.localStorage.setItem('SimpleScramble:lastAuthorizedEvent:V2335',
+        try { window.localStorage.setItem('SSnoHCP:lastAuthorizedEvent:V1',
           String(window.GOLFAPP_EVENT_KEY)); } catch (_) {}
       }
 
@@ -19549,8 +19690,8 @@ let scoreTimingDetail =
        Never use sshcpLocalStorageV2318 for this log: that wrapper prefixes
        GolfAPP:<event>: and was why switching events revived older histories.
        This is local device storage, not a Cloudflare or Google Sheets log. */
-    const TEST_LOG_KEY = 'SimpleScramble:ControlCenterLog:V2340';
-    const TEST_LOG_MIGRATED_KEY_V2340 = 'SimpleScramble:ControlCenterLogMigrated:V2340';
+    const TEST_LOG_KEY = 'SSnoHCP:ControlCenterLog:V1';
+    const TEST_LOG_MIGRATED_KEY_V2340 = 'SSnoHCP:ControlCenterLogMigrated:V1';
     const LEGACY_EVENT_LOG_SUFFIX_V2340 = ':rotbTestLogV75';
 
     /* V23.25 — the bootstrap URL event key, not QR/team identity or the mutable
@@ -19570,7 +19711,7 @@ let scoreTimingDetail =
         const legacyKeys = [];
         for (let i = 0; i < storage.length; i++) {
           const key = storage.key(i) || '';
-          const match = /^GolfAPP:([A-Za-z0-9][A-Za-z0-9_-]{1,39}):rotbTestLogV75$/.exec(key);
+          const match = /^GolfAPP:SSnoHCP:([A-Za-z0-9][A-Za-z0-9_-]{1,39}):rotbTestLogV75$/.exec(key);
           if (match) legacyKeys.push({key, event: match[1]});
         }
 
@@ -20717,7 +20858,7 @@ let scoreTimingDetail =
 
     function buildScreenLayoutLogReportV238() {
       const lines = [
-        'SSHCP ' + currentFrontendVersionLabelV1955() + ' SCREEN LAYOUT LOG',
+        'SSnoHCP ' + currentFrontendVersionLabelV1955() + ' SCREEN LAYOUT LOG',
         'Started: ' + (screenLayoutLogStartedAtV238 || '—'),
         'Copied: ' + new Date().toISOString(),
         'Entries: ' + screenLayoutLogEntriesV238.length,
@@ -22296,7 +22437,7 @@ let scoreTimingDetail =
     function buildResultAuditReportV189() {
       const log = getResultAuditLogV189();
       const lines = [
-        'SSHCP ' + currentFrontendVersionLabelV1955() + ' RESULT LOG',
+        'SSnoHCP ' + currentFrontendVersionLabelV1955() + ' RESULT LOG',
         'Generated: ' + new Date().toISOString(),
         'Tests: ' + log.length,
         ''
@@ -22398,7 +22539,7 @@ let scoreTimingDetail =
       );
 
       const lines = [
-        'SSHCP ' + currentFrontendVersionLabelV1955() + ' CONTROL CENTER LOG',
+        'SSnoHCP ' + currentFrontendVersionLabelV1955() + ' CONTROL CENTER LOG',
         'Generated: ' + new Date().toISOString(),
         'Viewport: ' + controlCenterViewportLineV188(),
         'Scale: ' + controlCenterGeometryLineV188(),
@@ -27023,86 +27164,16 @@ let scoreTimingDetail =
         }
       });
 
+      /* SSnoHCP V1.0: single bold gross-relative score, fitted within its inset.
+         Keep the existing hidden NET node for unchanged scoring/snapshot internals. */
       const running = header.querySelector('.score-running-header');
-      if (running) {
-        /* V18.56: use the true side zones around SCORE. Keep both white value
-           boxes identical, centered in their respective zones, pushed as large
-           as possible without crossing boundaries, capped by the row height,
-           and allowed to widen up to 120% of height when space permits. */
-        const parts = Array.from(running.children);
-
-        if (parts[1]) {
-          fitTextToBoxV5(parts[1], parts[1], headerHeight * 0.375, 0.001, {
-            horizontalPad: 10,
-            verticalPad: 4,
-            noMin: true
-          });
-        }
-
-        /* V23.68 — preserve the 24px minimum at ordinary zoom. Once
-           the nine-row cap is active, the running-score boxes must share the
-           header's smaller real height rather than spilling over its edges. */
-        const runningBoxFloorV2368 = reducedHeaderV2368 ? 1 : 24;
-        let boxWidth = Math.max(runningBoxFloorV2368, Math.round(headerHeight * 0.78));
-        let boxHeight = Math.max(runningBoxFloorV2368, Math.round(headerHeight * 0.78));
-        let boxRadius = Math.max(reducedHeaderV2368 ? 1 : 5,
-                                 Math.round(boxHeight * 0.18));
-
-        if (parts[1]) {
-          const runningRect = running.getBoundingClientRect();
-          const scoreRect = parts[1].getBoundingClientRect();
-          const sideGap = Math.max(reducedHeaderV2368 ? 0.25 : 2,
-                                   Math.round(headerHeight * 0.04));
-          const leftZoneWidth = Math.max(0, (scoreRect.left - runningRect.left) - (sideGap * 2));
-          const rightZoneWidth = Math.max(0, (runningRect.right - scoreRect.right) - (sideGap * 2));
-          const zoneWidth = Math.max(0, Math.min(leftZoneWidth, rightZoneWidth));
-          /* V18.57: keep the original 82% ceiling/20px floor unless the
-             shrinking header forces the total boxes to become smaller. */
-          const runningCapFloorV2368 = reducedHeaderV2368 ? 1 : 20;
-          const maxHeightFromRow = Math.max(runningCapFloorV2368, Math.round(headerHeight * 0.82));
-          boxHeight = Math.max(runningCapFloorV2368,
-            Math.min(maxHeightFromRow, zoneWidth || (reducedHeaderV2368 ? 1 : maxHeightFromRow)));
-          boxWidth = Math.max(boxHeight, Math.min(Math.round(boxHeight * 1.20),
-            Math.max(boxHeight, Math.round(zoneWidth || (reducedHeaderV2368 ? 1 : boxHeight)))));
-          boxRadius = Math.max(reducedHeaderV2368 ? 1 : 5,
-            Math.min(Math.round(boxHeight * 0.18), Math.round(boxHeight / 2)));
-        }
-
-        els.scorecardView.style.setProperty('--v1855-running-box-w', boxWidth + 'px');
-        els.scorecardView.style.setProperty('--v1855-running-box-h', boxHeight + 'px');
-        els.scorecardView.style.setProperty('--v1855-running-box-radius', boxRadius + 'px');
-
-        const fontMax = Math.max(0.001, boxHeight * 0.60);
-        const fontMin = 0.001;
-        const sharedSamples = ['-10', '+10'];
-        if (parts[0] && String(parts[0].textContent || '').trim()) sharedSamples.push(String(parts[0].textContent || '').trim());
-        if (parts[2] && String(parts[2].textContent || '').trim()) sharedSamples.push(String(parts[2].textContent || '').trim());
-
-        let sharedFontSize = Infinity;
-        [parts[0], parts[2]].forEach(target => {
-          if (!target) return;
-          sharedSamples.forEach(sample => {
-            sharedFontSize = Math.min(
-              sharedFontSize,
-              measureTextFitFontSizeV1856(target, sample, fontMax, fontMin, {
-                horizontalPad: Math.max(5, target.clientWidth * 0.12),
-                verticalPad: Math.max(3, target.clientHeight * 0.14),
-                lineHeight: 1,
-                noMin: true
-              })
-            );
-          });
-        });
-
-        if (!Number.isFinite(sharedFontSize)) sharedFontSize = fontMin;
-
-        [parts[0], parts[2]].forEach(target => {
-          if (!target) return;
-          target.style.setProperty('font-size', sharedFontSize + 'px', 'important');
-          target.style.setProperty('line-height', '1', 'important');
-          target.style.setProperty('white-space', 'nowrap', 'important');
-          target.style.setProperty('overflow', 'hidden', 'important');
-          target.style.setProperty('text-align', 'center', 'important');
+      const panelV10 = running && running.querySelector('.ssnohcp-running-panel-v10');
+      const grossV10 = panelV10 && panelV10.querySelector('.ssnohcp-score-v10');
+      if (panelV10 && grossV10) {
+        fitTextToBoxV5(panelV10, grossV10, headerHeight * .60, .001, {
+          horizontalPad: Math.max(6, panelV10.clientWidth * .08),
+          verticalPad: Math.max(2, panelV10.clientHeight * .08),
+          noMin: true
         });
       }
 
@@ -36266,7 +36337,7 @@ let scoreTimingDetail =
       let html =
         '<div class="tournament-summary-grid">' +
         '<div class="tournament-summary-row header">' +
-        '<div class="summary-team-header-v2268">TEAM</div><div class="summary-net-score-header-v2264">NET SCORE</div>' +
+        '<div class="summary-team-header-v2268">TEAM</div><div class="summary-net-score-header-v2264">SCORE</div>' +
         '</div>';
 
       rows.slice(0, 3).forEach((row, index) => {
@@ -36284,8 +36355,8 @@ let scoreTimingDetail =
           '<span class="summary-team-text">' + escapeHtml(displayTeamName(row.team || '')) + '</span>' +
           '</span></div>' +
           '<div class="tournament-summary-strokes top-three-strokes">' + escapeHtml(strokesText) + '</div>' +
-          '<div class="tournament-summary-net ' + scoreClass(row.net) + '">' +
-          escapeHtml(formatGolfScore(row.net)) + '</div>' +
+          '<div class="tournament-summary-net ' + scoreClass(row.gross) + '">' +
+          escapeHtml(formatGolfScore(row.gross)) + '</div>' +
           '</div>';
       });
 
@@ -36319,8 +36390,8 @@ let scoreTimingDetail =
             '<span class="summary-team-text">' + escapeHtml(displayTeamName(row.team || '')) + '</span>' +
             '</span></div>' +
             '<div class="tournament-summary-remaining-cell net-strokes">' + escapeHtml(strokesText) + '</div>' +
-            '<div class="tournament-summary-remaining-cell net-score ' + scoreClass(row.net) + '">' +
-            escapeHtml(formatGolfScore(row.net)) + '</div>' +
+            '<div class="tournament-summary-remaining-cell net-score ' + scoreClass(row.gross) + '">' +
+            escapeHtml(formatGolfScore(row.gross)) + '</div>' +
             '</div>';
       });
       html += '</div></div>';
@@ -36573,119 +36644,6 @@ let scoreTimingDetail =
           teamAnchor.className = 'leader-team-anchor';
           teamAnchor.appendChild(teamName);
 
-          const hcpCell =
-            document.createElement(
-              'div'
-            );
-
-
-          hcpCell.className =
-            'leader-hcp-cell';
-
-
-          /*
-            HCP SOURCE — OFFICIAL LEADERBOARD:
-            Prefer an explicit handicap value if Cloudflare supplies one.
-            If it does not, derive the handicap directly from the official
-            leaderboard values: GROSS - NET. This keeps HCP correct even
-            when the leaderboard response does not expose a separate HCP field.
-          */
-          const match =
-            teams.find(
-              team =>
-                Number(
-                  team.slot
-                ) ===
-                Number(
-                  row.slot
-                )
-            );
-
-
-          const directHandicapCandidates = [
-            row.handicap,
-            row.hcp,
-            row.teamHandicap,
-            row.teamHcp,
-            match
-              ? match.handicap
-              : undefined,
-            match
-              ? match.hcp
-              : undefined
-          ];
-
-
-          let handicapValue =
-            directHandicapCandidates.find(
-              value =>
-                value !== undefined &&
-                value !== null &&
-                String(
-                  value
-                ).trim() !== ''
-            );
-
-
-          let handicapNumber =
-            Number(
-              handicapValue
-            );
-
-
-          if (
-            !Number.isFinite(
-              handicapNumber
-            )
-          ) {
-
-            const grossNumber =
-              Number(
-                row.gross
-              );
-
-            const netNumber =
-              Number(
-                row.net
-              );
-
-
-            if (
-              Number.isFinite(
-                grossNumber
-              ) &&
-              Number.isFinite(
-                netNumber
-              )
-            ) {
-
-              handicapNumber =
-                Math.abs(
-                  grossNumber -
-                  netNumber
-                );
-
-            }
-
-          }
-
-
-          hcpCell.textContent =
-            Number.isFinite(
-              handicapNumber
-            )
-              ? (
-                  handicapNumber === 0
-                    ? '-'
-                    : String(
-                        Math.abs(
-                          handicapNumber
-                        )
-                      )
-                )
-              : '-';
-
-
           teamCell.append(
             teamAnchor
           );
@@ -36719,66 +36677,27 @@ let scoreTimingDetail =
           );
 
 
-          const throughScore =
-            document.createElement(
-              'div'
-            );
-
-
-          throughScore.className =
-            'leader-through-score ' +
-            scoreClass(
-              row.gross
-            );
-
-
-          throughScore.textContent =
-            formatGolfScore(
-              row.gross
-            );
-
-
-          /* V15.13c — ROUND is three direct rows.
-             No nested label wrapper: SCORE / THRU / HOLES COMPLETED. */
-          const throughWord =
-            document.createElement(
-              'div'
-            );
-
-
-          throughWord.className =
-            'leader-through-word';
-
-
-          throughWord.textContent =
-            'THRU';
-
-
-          const throughValue =
-            document.createElement(
-              'div'
-            );
-
-
-          throughValue.className =
-            'leader-through-value' +
-            (
-              Number(row.thru) > 0
-                ? ' has-progress'
-                : ''
-            );
-
-
-          throughValue.textContent =
-            row.thru;
-
-
-          throughCell.append(
-            throughScore,
-            throughWord,
-            throughValue
+          /* SSnoHCP V1.0: THRU is the last sequentially completed hole,
+             not the hole count. Progress fill above retains hole COUNT.
+             For shotgun starts, start 10 + 3 completed -> H12;
+             finishing all 18 returns to H9. Out-of-order edits require
+             explicit backend last-hole metadata for perfect accuracy. */
+          const matchingTeamV10 = teams.find(team =>
+            Number(team && team.slot) === Number(row.slot));
+          const explicitLastHoleV10 = Number(
+            row.lastCompletedHole ?? row.lastHoleCompleted ?? row.lastPlayedHole
           );
-
+          const startingHoleV10 = scorecardStartingHoleV16(matchingTeamV10 || row);
+          const holeCountV10 = Math.max(0, Math.min(18, Number(row.thru) || 0));
+          const displayedHoleV10 = holeCountV10 <= 0 ? '–' :
+            (Number.isInteger(explicitLastHoleV10) && explicitLastHoleV10 >= 1 && explicitLastHoleV10 <= 18
+              ? String(explicitLastHoleV10)
+              : String(((startingHoleV10 + holeCountV10 - 2) % 18) + 1));
+          const throughValue = document.createElement('div');
+          throughValue.className = 'leader-through-value ssnohcp-thru-value-v10' +
+            (holeCountV10 > 0 ? ' has-progress' : '');
+          throughValue.textContent = displayedHoleV10;
+          throughCell.appendChild(throughValue);
 
           const total =
             document.createElement(
@@ -36789,20 +36708,19 @@ let scoreTimingDetail =
           total.className =
             'leader-total ' +
             scoreClass(
-              row.net
+              row.gross
             );
 
 
           total.textContent =
             formatGolfScore(
-              row.net
+              row.gross
             );
 
 
           line.append(
             placeCell,
             teamCell,
-            hcpCell,
             throughCell,
             total
           );
@@ -37467,32 +37385,12 @@ let scoreTimingDetail =
           });
         }
 
-        /* V19.68 — ROUND is governed directly by the approved rendered-row
-           proportions. Do not feed these three labels back through their own
-           content-height boxes: that old fit path capped growth as rows became
-           taller. No absolute font minimums are used here. */
-        if (score) {
-          score.style.setProperty('font-size', (rowHeight * 0.35) + 'px', 'important');
-          score.style.setProperty('line-height', '0.92', 'important');
-          score.style.setProperty('white-space', 'nowrap', 'important');
-          score.style.setProperty('overflow', 'visible', 'important');
-          score.style.setProperty('text-align', 'center', 'important');
-        }
-
-        if (thruWord) {
-          thruWord.style.setProperty('font-size', (rowHeight * 0.17) + 'px', 'important');
-          thruWord.style.setProperty('line-height', '1', 'important');
-          thruWord.style.setProperty('white-space', 'nowrap', 'important');
-          thruWord.style.setProperty('overflow', 'visible', 'important');
-          thruWord.style.setProperty('text-align', 'center', 'important');
-        }
-
+        /* SSnoHCP V1.0: one centered THRU hole number, 50% of row height,
+           reducing only if the available 20%-wide cell requires it. */
         if (thruValue) {
-          thruValue.style.setProperty('font-size', (rowHeight * 0.35) + 'px', 'important');
-          thruValue.style.setProperty('line-height', '0.92', 'important');
-          thruValue.style.setProperty('white-space', 'nowrap', 'important');
-          thruValue.style.setProperty('overflow', 'visible', 'important');
-          thruValue.style.setProperty('text-align', 'center', 'important');
+          fitTextToBoxV5(thruValue.parentElement, thruValue, rowHeight * .50, .001, {
+            horizontalPad: 8, verticalPad: 5, noMin: true
+          });
         }
       });
     }
@@ -38830,7 +38728,7 @@ let scoreTimingDetail =
             '<div class="quick-guide-line-v172 quick-guide-bullet-v2161">• <strong>BLUE</strong> highlighted scores are <strong>SAVED TO SERVER</strong>.</div>' +
             '<div class="quick-guide-line-v172 quick-guide-bullet-v2161">• Tap a submitted score to <strong>EDIT</strong>.</div>' +
             '<div class="quick-guide-line-v172 quick-guide-bullet-v2161">• Tap <strong>GRAY CIRCLES</strong> for Game information.</div>' +
-            '<div class="quick-guide-line-v172 quick-guide-bullet-v2161">• <strong>SCORE HEADER</strong>: left <strong>GROSS</strong> / right <strong>NET</strong>.</div>' +
+            '<div class="quick-guide-line-v172 quick-guide-bullet-v2161">• <strong>SCORE HEADER</strong>: running gross score relative to par.</div>' +
             '<div class="quick-guide-section-heading-v2161 quick-guide-screen-divider-v2258">LIVE LEADERBOARD</div>' +
             '<div class="quick-guide-line-v172 quick-guide-bullet-v2161">• View current standings.</div>' +
             '<div class="quick-guide-line-v172 quick-guide-bullet-v2161">• <strong>20s AUTO REFRESH</strong>.</div>' +
@@ -38838,7 +38736,7 @@ let scoreTimingDetail =
             '<div class="quick-guide-line-v172 quick-guide-bullet-v2161">• Touch the Leaderboard to pause and reset Auto Refresh while reviewing.</div>' +
             '<div class="quick-guide-line-v172 quick-guide-note-v2161">When the <strong>SCRAMBLE IS COMPLETE</strong>, explore <strong>SCRAMBLE SUMMARY</strong>, <strong>SKINS</strong>, <strong>GEEK MODE</strong>, and <strong>GAME MODE</strong> for final results and additional detail.</div>' +
             '<div class="quick-guide-section-heading-v2161 quick-guide-screen-divider-v2258">SCRAMBLE SUMMARY</div>' +
-            '<div class="quick-guide-line-v172 quick-guide-bullet-v2161">• Final <strong>NET SCORES</strong> include handicap.</div>' +
+            '<div class="quick-guide-line-v172 quick-guide-bullet-v2161">• Final <strong>GROSS SCORES</strong> determine standings. No handicap strokes.</div>' +
             '<div class="quick-guide-line-v172 quick-guide-bullet-v2161">• <strong>TOP 3</strong> teams are featured.</div>' +
             '<div class="quick-guide-line-v172 quick-guide-bullet-v2161">• Remaining teams are shown below.</div>' +
             '<div class="quick-guide-line-v172 quick-guide-bullet-v2161">• Tap <strong>TIE BREAK</strong> when needed.</div>' +
@@ -40380,7 +40278,7 @@ let scoreTimingDetail =
             ? window.crypto.randomUUID()
             : String(Date.now()) + '-' + Math.random().toString(36).slice(2);
           try {
-            window.localStorage.setItem('SimpleScramble:pendingMasterEvent:V2336',
+            window.localStorage.setItem('SSnoHCP:pendingMasterEvent:V1',
               JSON.stringify({event:key,nonce:masterNonceV2336,created:Date.now()}));
           } catch (_) {}
           url.searchParams.delete('masterPicker');

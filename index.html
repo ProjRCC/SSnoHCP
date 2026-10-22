@@ -1,3 +1,5 @@
+<!-- SSnoHCP V1.2 TEST — CF3.36 EVENT!D2-controlled frontend switching in MASTER + validated QR/direct URL correction; shared nonce for cross-repo MASTER GO. Exact V1.1-Q8H4CP donor; scoring and visual geometry unchanged. -->
+<!-- SSnoHCP | BASE KEY: 1.1-Q8H4CP | BUILD KEY: 1.2-M7H4CP -->
 <!-- SSnoHCP V1.1 TEST — PWA identity/isolation correction only from exact SSnoHCP V1.0 donor. Give SSnoHCP its own manifest id, start_url and path scope; distinguish browser/Android installation title, application metadata, and absolute manifest reference. Preserve scorecard, leaderboard THRU, summary, auth, score saving, backend, and SSHCP resources. -->
 <!-- SSnoHCP | BASE KEY: 1.0-N7H4CP | BUILD KEY: 1.1-Q8H4CP -->
 <!-- SSnoHCP V1.0 TEST — standalone no-handicap frontend fork of verified SSHCP V23.91-Q7M4VX. Single bold gross-relative score; 9/49/20/22 Leaderboard with last sequential shotgun hole in THRU, hole-count progress, gross TOTAL; Summary gross score language and intact result hierarchy/tiebreak; storage isolated per SSnoHCP event. No Worker/Sheets edited. Event resolver for new spreadsheet NOT verified. -->
@@ -708,7 +710,7 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
           installed PWA reopens its last genuinely authorized event. */
        var verifiedEventKeyV2319 = 'SSnoHCP:lastVerifiedEvent:V1';
        var authorizedEventKeyV2335 = 'SSnoHCP:lastAuthorizedEvent:V1';
-       var masterIntentKeyV2336 = 'SSnoHCP:pendingMasterEvent:V1';
+       var masterIntentKeyV2336 = 'SimpleScramble:pendingMasterEvent:V2336';
        var validEventV2336 = /^[A-Za-z0-9][A-Za-z0-9_-]{1,39}$/;
        var hasIncomingQrV2336 = queryV2318.has('passkey') || queryV2318.has('key');
        var requestedMasterEventV2336 = String(queryV2318.get('event') || '');
@@ -1198,8 +1200,6 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
       window.__sshcpEventBootstrapV2318 = (async function(){
          if (masterPickerV2326) return await new Promise(function() {}); // no event APIs behind chooser
          if (!validV2318) throw new Error('Open this page using ?event=EVENTKEY (a valid event key).');
-         if (['SSHCP26','ROTB26'].includes(eventV2318.toUpperCase()))
-           throw new Error('SSnoHCP V1.1 cannot use an SSHCP/ROTB tournament event. New event resolver connection is required.');
         if (fastTeamReturnV2338 && fastPresentationV2338) {
           startupTraceV2337.eventConfigMs = 0;
           window.SSHCP_EVENT.DETAILS = fastPresentationV2338.longName;
@@ -1217,6 +1217,25 @@ window.sshcpWidthMultiplierV2381 = function(cssWidth, adjustedDpr) {
         if (!response.ok || data.ok !== true || data.event !== eventV2318 ||
             data.shortName !== eventV2318 || !data.longName || !data.homeImage || !data.infoImage) {
           throw new Error(data.error || 'Event metadata or identity validation failed.');
+        }
+        // CF3.36: a fresh, identity-verified eventConfig may correct a QR,
+        // bookmark or old PWA launch into the wrong frontend. Neither the
+        // URL nor a cached event guess can decide the tournament's mode.
+        // Older Workers without noHandicap remain non-redirecting (safe rollout).
+        if (data.noHandicap === false) {
+          if (masterEntryV2326 && freshMasterIntentV2336) {
+            // MASTER selection consumed its nonce earlier on this wrong page.
+            // Carry it exactly once to the correct index; qrAuth still verifies GO.
+            try { window.localStorage.setItem(masterIntentKeyV2336,
+              JSON.stringify(freshMasterIntentV2336)); } catch (_) {}
+          }
+          const correctFrontendV3636 = new URL('/SSHCP/', window.location.origin);
+          correctFrontendV3636.search = window.location.search;
+          correctFrontendV3636.hash = window.location.hash;
+          window.location.replace(correctFrontendV3636.pathname +
+            correctFrontendV3636.search + correctFrontendV3636.hash);
+          // Do not render a mismatched HOME while the new index navigates.
+          return await new Promise(function(){});
         }
         window.SSHCP_EVENT.DETAILS = String(data.longName);
         window.SSHCP_EVENT.SHORT_NAME = String(data.shortName);
@@ -16245,7 +16264,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 
         <button id="testLogHotspot" class="home-event-test-hotspot" type="button" aria-label="Open test log">
           <span id="homeEventInfoV2255" class="home-event-info"></span>
-          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.1</span></span>
+          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.2</span></span>
         </button>
         <script>
           (function () {
@@ -40184,7 +40203,7 @@ let scoreTimingDetail =
         Math.max(0, performance.now() - started) : 0;
       const scheduledReveal = new Promise(resolve =>
         window.setTimeout(resolve, Math.max(0, 3100 - elapsed)));
-      let keys = new Set();
+      let keys = new Map();
       try {
         const response = await window.fetch(
           'https://rotbtest.projrcc.workers.dev/?action=eventList',
@@ -40196,7 +40215,8 @@ let scoreTimingDetail =
           throw new Error('Invalid tournament directory.');
         for (const item of data.events) {
           const key = String(item && item.event || '');
-          if (/^[A-Za-z0-9][A-Za-z0-9_-]{1,39}$/.test(key)) keys.add(key);
+          if (/^[A-Za-z0-9][A-Za-z0-9_-]{1,39}$/.test(key))
+            keys.set(key, item.noHandicap === true);
         }
         if (!keys.size) throw new Error('No active tournaments.');
         await scheduledReveal;
@@ -40258,7 +40278,7 @@ let scoreTimingDetail =
         if (event.key === 'Escape' && !options.hidden) { close(); trigger.focus(); }
       });
       let switchingEventV2330 = false;
-      for (const key of keys) {
+      for (const [key, noHandicapV3636] of keys) {
         const option = document.createElement('button');
         option.type = 'button';
         option.className = 'sshcp-event-option-v2327';
@@ -40280,7 +40300,7 @@ let scoreTimingDetail =
             ? window.crypto.randomUUID()
             : String(Date.now()) + '-' + Math.random().toString(36).slice(2);
           try {
-            window.localStorage.setItem('SSnoHCP:pendingMasterEvent:V1',
+            window.localStorage.setItem('SimpleScramble:pendingMasterEvent:V2336',
               JSON.stringify({event:key,nonce:masterNonceV2336,created:Date.now()}));
           } catch (_) {}
           url.searchParams.delete('masterPicker');
@@ -40288,6 +40308,9 @@ let scoreTimingDetail =
           url.searchParams.set('masterEntrance', '1');
           url.searchParams.set('masterIntent', masterNonceV2336);
           url.searchParams.delete('passkey'); url.searchParams.delete('key');
+          // CF3.36 — route to the event's own repo/index.html, not the chooser's.
+          // This deliberately keeps every active Worker-provided event in MASTER.
+          url.pathname = noHandicapV3636 ? '/SSnoHCP/' : '/SSHCP/';
           const shield = beginDataRevealShieldV177(
             'master-pick-v2330', [], '#fff', true, 5100
           );

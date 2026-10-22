@@ -1,3 +1,5 @@
+<!-- SSnoHCP V1.13 TEST — donor exact V1.12 BUILD 1.12-Q8H4CP. Visual shadow hierarchy ONLY: one V1.12-strength shadow around each continuous Scorecard/Leaderboard table, no split header/body or internal cell/button shadows. Standalone buttons and outer modal/table cards keep the same strength. Decorative table shadows cannot intercept input and follow responsive geometry without changing table layout, scroll/clip, fixed headers, or modal z-index. No name-case, event, scoring, Worker, PWA or geometry changes. HOME/runtime/build labels verified. -->
+<!-- SSnoHCP | BASE KEY: 1.12-Q8H4CP | BUILD KEY: 1.13-R7H4CP -->
 <!-- SSnoHCP V1.12 TEST — exact V1.11 BUILD 1.11-Z7H4CP donor. Every CSS drop shadow uses one clearly visible 0 5px 16px rgba(0,0,0,.28) shadow. Preserve gold focus rings/inset selections and shadow:none pressed/flat states. No geometry, scoring, auth, names, routing, Worker or manifest changes. HOME/runtime/build labels updated. -->
 <!-- SSnoHCP | BASE KEY: 1.11-Z7H4CP | BUILD KEY: 1.12-Q8H4CP -->
 <!-- SSnoHCP V1.11 TEST — donor is exact V1.10 GOLDEN BUILD 1.10-Y8H4CP. Reuses the existing very subtle white-page shadow (0 2px 10px rgba(0,0,0,.05)) on visible buttons and whole table surfaces. No dimensions, borders, scoring, routing, Worker, PWA manifest, or counterpart SSHCP changes. HOME/runtime/build labels updated. -->
@@ -16160,7 +16162,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 </style>
 
 
-<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.12';window.SSNOHCP_BUILD_KEY='1.12-Q8H4CP';</script>
+<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.13';window.SSNOHCP_BUILD_KEY='1.13-R7H4CP';</script>
 <style id="ssnohcp-v110-leaderboard-thru-and-scorecard-hole">
 /* V1.10: HOLE numbers on scorecard remain 700 at their original size. */
 #scorecardView .hole-cell .hole-number {
@@ -16222,6 +16224,53 @@ html.sshcp-tournament-complete #homeView #homeLeaderboardButton:not(:active),
 /* All visible drop shadows in V1.12 use the same unified value;
    other states (focus rings, inset gold markers, flat/pressed surfaces) are deliberate non-drop effects. */
 :root { --ssnohcp-unified-shadow-v112: 0 5px 16px rgba(0,0,0,.28); }
+</style>
+
+<style id="ssnohcp-v113-table-shadow-layering">
+/* One surface = one shadow. Never add independent depth to scroll portions
+   (their clip-path / paint containment cut off the left/right shadow).
+   The decorative ring is painted by the containing SCREEN rather than by
+   the clipped table; fixed headers, scrollbars, rows and touch targets remain
+   byte-for-byte unchanged. */
+#scorecardView .score-table-head,
+#scorecardView .score-scroll,
+#leaderboardView .leader-table-head,
+#leaderboardView .leader-content {
+  box-shadow: none !important;
+}
+/* A decorative ring only: shadow is outside its transparent box. The coordinates
+   are measured from the existing header and scroll viewport; no DOM wrappers,
+   table z-index changes, width/height modifications or click interception. */
+#scorecardView .scorecard-screen::before,
+#leaderboardView .leaderboard-screen::before {
+  content: "";
+  position: absolute;
+  display: block;
+  left: var(--ssnohcp-v113-ring-left, 0px);
+  top: var(--ssnohcp-v113-ring-top, 0px);
+  width: var(--ssnohcp-v113-ring-width, 0px);
+  height: var(--ssnohcp-v113-ring-height, 0px);
+  border-radius: 9px;
+  box-shadow: var(--ssnohcp-unified-shadow-v112) !important;
+  opacity: var(--ssnohcp-v113-ring-ready, 0);
+  background: transparent !important;
+  pointer-events: none !important;
+  z-index: 115; /* Decor only; below full-screen dialogs/curtains. */
+}
+/* Buttons INSIDE a table are interactive table cells, not raised cards.
+   Keep blue hole-score squares and any future embedded table buttons flat.
+   This intentionally overrides the broad V1.11 standalone-button rule. */
+html body #scorecardView #scoreScroll button.score-button,
+html body #scorecardView #scoreScroll button,
+html body #leaderboardView #leaderRows button,
+html body .modal-overlay .geek-table-shell-v180 button,
+html body .modal-overlay .geek-all-teams-table-v2216 button,
+html body .modal-overlay .game-mode-table-v2026 button,
+html body .modal-overlay .skins-table-v1627 button,
+html body .modal-overlay .tournament-summary-grid button,
+html body .modal-overlay .tournament-summary-remaining button {
+  box-shadow: none !important;
+}
 </style>
 </head>
 
@@ -16351,7 +16400,7 @@ html.sshcp-tournament-complete #homeView #homeLeaderboardButton:not(:active),
 
         <button id="testLogHotspot" class="home-event-test-hotspot" type="button" aria-label="Open test log">
           <span id="homeEventInfoV2255" class="home-event-info"></span>
-          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.12</span></span>
+          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.13</span></span>
         </button>
         <script>
           (function () {
@@ -42026,6 +42075,63 @@ let scoreTimingDetail =
   if (document.fonts && document.fonts.ready)
     document.fonts.ready.then(schedule);
   schedule();
+})();
+</script>
+
+<script id="ssnohcp-v113-unified-table-depth">
+/* Visual-only geometry tracker. A clipped scrolling table cannot paint a
+   complete 4-sided CSS box shadow. Put one pointer-transparent decorative
+   perimeter at SCREEN level, matching the two already-visible pieces.
+   No DOM changes, no event auth/scoring mutations, no scroll listeners. */
+(function(){
+  'use strict';
+  function setup(screenSelector, headerSelector, scrollSelector){
+    const screen = document.querySelector(screenSelector);
+    const header = document.querySelector(headerSelector);
+    const scroller = document.querySelector(scrollSelector);
+    if (!screen || !header || !scroller) return;
+    let queued = false;
+    function update(){
+      queued = false;
+      const sr = screen.getBoundingClientRect();
+      const hr = header.getBoundingClientRect();
+      const cr = scroller.getBoundingClientRect();
+      if (!sr.width || !hr.width || !cr.width || !cr.height){
+        screen.style.setProperty('--ssnohcp-v113-ring-ready','0');
+        return;
+      }
+      const left = Math.min(hr.left, cr.left) - sr.left;
+      const right = Math.max(hr.right, cr.right) - sr.left;
+      const top = Math.min(hr.top, cr.top) - sr.top;
+      const bottom = Math.max(hr.bottom, cr.bottom) - sr.top;
+      screen.style.setProperty('--ssnohcp-v113-ring-left',left.toFixed(2)+'px');
+      screen.style.setProperty('--ssnohcp-v113-ring-top',top.toFixed(2)+'px');
+      screen.style.setProperty('--ssnohcp-v113-ring-width',Math.max(0,right-left).toFixed(2)+'px');
+      screen.style.setProperty('--ssnohcp-v113-ring-height',Math.max(0,bottom-top).toFixed(2)+'px');
+      screen.style.setProperty('--ssnohcp-v113-ring-ready','1');
+    }
+    function schedule(){
+      if (queued) return;
+      queued=true;
+      requestAnimationFrame(update);
+    }
+    if (typeof ResizeObserver === 'function'){
+      const ro = new ResizeObserver(schedule);
+      ro.observe(screen); ro.observe(header); ro.observe(scroller);
+    }
+    window.addEventListener('resize', schedule, {passive:true});
+    window.addEventListener('orientationchange', schedule, {passive:true});
+    window.addEventListener('pageshow', schedule, {passive:true});
+    if (window.visualViewport){
+      window.visualViewport.addEventListener('resize', schedule, {passive:true});
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
+    schedule();
+  }
+  setup('#scorecardView .scorecard-screen',
+        '#scorecardView .score-table-head','#scorecardView .score-scroll');
+  setup('#leaderboardView .leaderboard-screen',
+        '#leaderboardView .leader-table-head','#leaderboardView .leader-content');
 })();
 </script>
 </body>

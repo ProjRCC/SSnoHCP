@@ -1,7 +1,4 @@
-<!-- SSnoHCP V1.15 TEST — popup interior foreground exterior shadows; V1.14 main screens byte-identical visually. Source donor exact V1.14 BUILD 1.14-T8H4CP. -->
-<!-- SSnoHCP | BASE KEY: 1.14-T8H4CP | BUILD KEY: 1.15-M7H4CP -->
-<!-- SSnoHCP V1.14 TEST — DIRECT DONOR: protected V1.10 GOLDEN (1.10-Y8H4CP). Exterior-shadows-only experiment, from original unshadowed baseline; rejected V1.11–V1.13 are NOT donors. Preserve ALL existing modal/popup, Quick Guide, Game, Geek, Summary and Control Center shadows/styles. Only four visible HOME action boundaries; SCORECARD two header nav buttons, one unified table perimeter, one footer button; LEADERBOARD two header nav buttons, one unified table perimeter, visible footer actions. Decorative table shadows are pointer-transparent and outside the combined fixed-header/scroll viewport, following responsive layout without altering scroll/header geometry. No internal cell/score-box shadows. NO scoring, authorization, routing, manifest, Worker, Sheet, or event-name case changes. -->
-<!-- SSnoHCP | BASE KEY: 1.10-Y8H4CP | BUILD KEY: 1.14-T8H4CP -->
+<!-- SSnoHCP V1.16 TEST | BASE KEY 1.10-Y8H4CP | BUILD KEY 1.16-B7H4CX | UI only: exterior box-shadow on standalone clickable action buttons; exclude all table components, score boxes, selectors/dropdowns/menus and popup shells. Fresh branch from protected V1.10 GOLDEN. -->
 <!-- SSnoHCP V1.10 TEST — exact SSnoHCP V1.8 (1.8-W7H4CP) donor. Scorecard HOLE numbers enforce weight 700 at original size; leaderboard THRU completed-hole numerals use weight 500 and font-size 50% of actual leaderboard row height. HOME/runtime/build version updated. No other layout, scoring, Worker, manifest, or routing changes. -->
 <!-- SSnoHCP | BASE KEY: 1.8-W7H4CP | BUILD KEY: 1.10-Y8H4CP -->
 <!-- SSnoHCP V1.8 TEST — Correct target: LIVE LEADERBOARD THRU hole numerals now Oswald regular (400), not heavy (800). Undo unintended V1.7 scorecard HOLE weight override; preserve original scorecard styling, running-total box, other leaderboard columns, one-app PWA routing, score logic and Worker. HOME and runtime identity updated to V1.8. Exact donor SSnoHCP V1.7 / BUILD 1.7-V9H4CP. -->
@@ -16164,7 +16161,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 </style>
 
 
-<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.15';window.SSNOHCP_BUILD_KEY='1.15-M7H4CP';</script>
+<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.16';window.SSNOHCP_BUILD_KEY='1.16-B7H4CX';</script>
 <style id="ssnohcp-v110-leaderboard-thru-and-scorecard-hole">
 /* V1.10: HOLE numbers on scorecard remain 700 at their original size. */
 #scorecardView .hole-cell .hole-number {
@@ -16180,77 +16177,6 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 }
 </style>
 
-
-<style id="ssnohcp-v114-main-exterior-shadows-only">
-/* V1.14: exactly one consistent exterior shadow, used only on the finished
-   visible MAIN-SCREEN action silhouettes and the two main table footprints.
-   Never touch existing popup/after-play/quick-guide/Control Center styling. */
-:root { --ssnohcp-v114-exterior-shadow: 0 5px 16px rgba(0,0,0,.28); }
-/* HOME: menu; leaderboard/summary; complete scorecard action; quick guide. */
-html body #homeView #homeMenuToggleV2054.home-menu-toggle-v2054,
-html body #homeView #homeLeaderboardButton.home-main-button,
-html body #homeView #homeScorecardAccess .home-scorecard-split,
-html body #homeView .sshcp-home-guide-row > .quick-guide-button,
-/* SCORECARD: HOME + GUIDE and one fixed LEADERBOARD footer action. */
-html body #scorecardView .score-nav > .nav-button,
-html body #scorecardView .score-bottom-actions > #scoreLeaderboardButton,
-/* LEADERBOARD: HOME + GUIDE and the visible footer actions. */
-html body #leaderboardView .leader-nav > .nav-button,
-html body #leaderboardView .leader-bottom > #leaderScorecardButton,
-html body #leaderboardView .leader-bottom > #leaderRefreshButton,
-html body #leaderboardView .leader-final-slot > #leaderFinalActionButton {
-  box-shadow: var(--ssnohcp-v114-exterior-shadow) !important;
-}
-/* This is a stand-alone transparent shadow outline, not a new table surface.
-   It can paint in the margin OUTSIDE a clipped scroll viewport. The table's
-   internal header, cells, scores, scrolling, borders, stacking stay unchanged. */
-#scorecardView .ssnohcp-v114-table-shadow,
-#leaderboardView .ssnohcp-v114-table-shadow {
-  position:absolute;
-  display:block;
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  border:0;
-  background:transparent;
-  border-radius: 10px;
-  box-shadow: var(--ssnohcp-v114-exterior-shadow);
-  pointer-events:none !important;
-  opacity:0;
-  z-index:0;
-}
-</style>
-
-<style id="ssnohcp-v115-popup-foreground-exterior-shadows">
-/* V1.15: POPUP AS LEVEL ZERO. Shadows are a final visual effect only:
-   actual completed table rectangles (including scrolling header/body) are
-   measured, not their inner children. The popup shell is never restyled.
-   MAIN screens remain EXACTLY as in V1.14. */
-:root { --ssnohcp-v115-popup-exterior-shadow: var(--ssnohcp-v114-exterior-shadow); }
-/* Three approved popup families only; all other modal types are untouched. */
-#modalOverlay.tournament-summary .modal-actions > .modal-btn,
-#modalOverlay.game-mode-results-v2026 .modal-actions > .modal-btn,
-#modalOverlay.geek-mode-v180 .modal-actions > .modal-btn,
-#modalOverlay.geek-mode-v180 .modal-actions .geek-filter-anchor-v186 > .geek-filter-button-v186 {
-  box-shadow: var(--ssnohcp-v115-popup-exterior-shadow) !important;
-}
-/* One independent rectangular silhouette per whole table: absolute in the
-   existing popup card, OUTSIDE scrolling/overflow-clipped table internals.
-   Inserted first and pointer-transparent; no dimensions/handlers changed. */
-#modalOverlay .ssnohcp-v115-exterior-shadow-mask {
-  position: absolute !important;
-  display: block;
-  box-sizing: border-box !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  background: transparent !important;
-  box-shadow: var(--ssnohcp-v115-popup-exterior-shadow) !important;
-  pointer-events: none !important;
-  z-index: 0;
-  opacity: 0;
-}
-</style>
 </head>
 
 
@@ -16379,7 +16305,7 @@ html body #leaderboardView .leader-final-slot > #leaderFinalActionButton {
 
         <button id="testLogHotspot" class="home-event-test-hotspot" type="button" aria-label="Open test log">
           <span id="homeEventInfoV2255" class="home-event-info"></span>
-          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.15</span></span>
+          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.16</span></span>
         </button>
         <script>
           (function () {
@@ -42057,169 +41983,44 @@ let scoreTimingDetail =
 })();
 </script>
 
-<script id="ssnohcp-v114-visible-table-perimeters">
-/* MAIN SCREENS ONLY. Visual footprint measurement; do not modify table DOM,
-   clip/overflow rules, game data or popup layers. Nothing is interactive. */
-(function () {
-  'use strict';
-  function decorate(screenSelector, headSelector, bodySelector) {
-    const screen = document.querySelector(screenSelector);
-    const head = document.querySelector(headSelector);
-    const body = document.querySelector(bodySelector);
-    if (!screen || !head || !body) return;
-    const shadow = document.createElement('div');
-    shadow.className = 'ssnohcp-v114-table-shadow';
-    shadow.setAttribute('aria-hidden','true');
-    screen.insertBefore(shadow, screen.firstChild);
-    let queued = false;
-    function update() {
-      queued = false;
-      const sc = screen.getBoundingClientRect();
-      const h = head.getBoundingClientRect();
-      const b = body.getBoundingClientRect();
-      const left = Math.min(h.left,b.left) - sc.left;
-      const top = Math.min(h.top,b.top) - sc.top;
-      const right = Math.max(h.right,b.right) - sc.left;
-      const bottom = Math.max(h.bottom,b.bottom) - sc.top;
-      if (!(sc.width>0 && h.width>0 && b.width>0 && h.height>0 && b.height>0 && bottom>top)) {
-        shadow.style.opacity = '0';
-        return;
-      }
-      shadow.style.left = left.toFixed(2)+'px';
-      shadow.style.top = top.toFixed(2)+'px';
-      shadow.style.width = Math.max(0,right-left).toFixed(2)+'px';
-      shadow.style.height = Math.max(0,bottom-top).toFixed(2)+'px';
-      shadow.style.opacity = '1';
-    }
-    function schedule() {
-      if (queued) return;
-      queued = true;
-      requestAnimationFrame(update);
-    }
-    if (typeof ResizeObserver === 'function') {
-      const observer = new ResizeObserver(schedule);
-      observer.observe(screen);
-      observer.observe(head);
-      observer.observe(body);
-    }
-    window.addEventListener('resize',schedule,{passive:true});
-    window.addEventListener('pageshow',schedule,{passive:true});
-    if (window.visualViewport) window.visualViewport.addEventListener('resize',schedule,{passive:true});
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
-    schedule();
+<!-- SSnoHCP V1.16: standalone action button shadows ONLY. No table / dropdown / menu / popup-shell shadows. -->
+<style id="ssnohcp-v116-standalone-button-shadows">
+  @layer ssnohcp-v116-action-shadows {
+  /* Dedicated cascade layer overrides legacy !important shadow resets only.
+     No layout, display, stacking, overflow, or interaction properties change. */
+  /* Every targeted action uses exactly the same OUTSIDE shadow; no box geometry changes. */
+  #homeLeaderboardButton,
+  #homeView .quick-guide-button,
+  /* HOME's split SCORECARD action is ONE visual button, not two competing shadows. */
+  #homeScorecardAccess > .home-scorecard-split,
+  #scorecardView .score-nav > button.nav-button,
+  #scorecardView .score-bottom-actions > button.bottom-action,
+  #leaderboardView .leader-nav > button.nav-button,
+  #leaderboardView button.leader-final-action,
+  #leaderboardView .leader-bottom > button,
+  #testLogView .test-log-screen button,
+  #scrambleModeView .test-log-screen button,
+  #qrWelcomeOverlayV170 button.qr-welcome-button-v170,
+  #teamsPopupOverlay button.teams-popup-back,
+  #tipsOverlayV2154 button.tips-summary-v2215,
+  #tipsOverlayV2154 button.tips-ok-v2154,
+  #scoreEntryOverlay button,
+  #teamInfoOverlayV2032 button.team-info-back-v2032,
+  #modalOverlay button.modal-btn,
+  #modalOverlay button.modal-close-x,
+  #modalOverlay button.switch-auth-button,
+  #modalOverlay button.geek-filter-apply-v186,
+  #modalOverlay button.geek-all-teams-filter-apply-v2216,
+  #modalOverlay button.geek-copy-v180b,
+  #modalOverlay button.geek-download-v2277,
+  button.geek-download-status-ok-v2279,
+  button.geek-pdf-paper-download-v2281 {
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.28) !important;
   }
-  decorate('#scorecardView .scorecard-screen',
-    '#scorecardView .score-table-head','#scorecardView .score-scroll');
-  decorate('#leaderboardView .leaderboard-screen',
-    '#leaderboardView .leader-table-head','#leaderboardView .leader-content');
-})();
-</script>
-
-<script id="ssnohcp-v115-popup-perimeter-masks">
-/* V1.15: popups already have their own Level-0 background. Draw one exterior
-   shadow for each COMPLETE rounded table silhouette ON that background.
-   Avoid shadowing individual header/scroll/cell pieces or adding wrapping DOM
-   around the live scoring UI. Main screen V1.14 decorations remain intact. */
-(function(){
-  'use strict';
-  const overlay = document.getElementById('modalOverlay');
-  const box = overlay && overlay.querySelector('.modal-box');
-  const body = document.getElementById('modalBody');
-  if (!overlay || !box || !body) return;
-  const specs = [
-    {type:'tournament-summary', selector:'.tournament-summary-grid', radius:9},
-    {type:'tournament-summary', selector:'.tournament-summary-remaining', radius:9},
-    {type:'game-mode-results-v2026', selector:'.game-mode-table-v2026', radius:9, clipScroll:true},
-    {type:'geek-mode-v180', selector:'.geek-table-shell-v180', radius:10}
-  ];
-  const frames = [];
-  let pending = false;
-  let resizeObserver = null;
-  const observed = new Set();
-  function syncObserved(elements) {
-    if (!resizeObserver) return;
-    const next = new Set(elements);
-    for (const old of observed) {
-      if (!next.has(old)) { resizeObserver.unobserve(old); observed.delete(old); }
-    }
-    for (const el of next) {
-      if (!observed.has(el)) { resizeObserver.observe(el); observed.add(el); }
-    }
   }
-  function showFrame(frame, bounds, card, radius, clip) {
-    const scaleX = card.width / (box.offsetWidth || card.width);
-    const scaleY = card.height / (box.offsetHeight || card.height);
-    const x = (bounds.left-card.left)/scaleX - box.clientLeft;
-    const y = (bounds.top-card.top)/scaleY - box.clientTop;
-    frame.style.left=x.toFixed(2)+'px';
-    frame.style.top=y.toFixed(2)+'px';
-    frame.style.width=(bounds.width/scaleX).toFixed(2)+'px';
-    frame.style.height=(bounds.height/scaleY).toFixed(2)+'px';
-    frame.style.borderRadius=radius+'px';
-    if (clip) {
-      // The GAME tables move inside a scroll viewport. Shadow the visible
-      // rectangle sides, not invisible rows above/below its viewport.
-      const area = body.getBoundingClientRect();
-      const above = (area.top-bounds.top-8)/scaleY;
-      const below = (bounds.bottom-area.bottom-8)/scaleY;
-      frame.style.clipPath='inset('+Math.max(-25,above).toFixed(2)+'px -25px '+
-          Math.max(-25,below).toFixed(2)+'px -25px)';
-    } else frame.style.clipPath='none';
-    frame.style.opacity='1';
-  }
-  function update() {
-    pending=false;
-    if(!overlay.classList.contains('open')) {
-      frames.forEach(f=>f.style.opacity='0');
-      syncObserved([box,body]);
-      return;
-    }
-    const mode = specs.find(s=>overlay.classList.contains(s.type));
-    if(!mode) { frames.forEach(f=>f.style.opacity='0'); syncObserved([box,body]); return; }
-    const card=box.getBoundingClientRect();
-    if(!(card.width>0 && card.height>0)) return;
-    const targets=[];
-    for(const spec of specs) {
-      if(!overlay.classList.contains(spec.type)) continue;
-      for(const el of body.querySelectorAll(spec.selector)) {
-        if(el.getClientRects().length) targets.push({el,spec});
-      }
-    }
-    syncObserved([box,body,...targets.map(item=>item.el)]);
-    targets.forEach(({el,spec},index)=>{
-      let frame=frames[index];
-      if(!frame) {
-        frame=document.createElement('div');
-        frame.className='ssnohcp-v115-exterior-shadow-mask';
-        frame.setAttribute('aria-hidden','true');
-        box.insertBefore(frame,box.firstChild);
-        frames.push(frame);
-      }
-      const r=el.getBoundingClientRect();
-      if(spec.clipScroll) {
-        const scroll=body.getBoundingClientRect();
-        if(r.bottom<=scroll.top || r.top>=scroll.bottom){frame.style.opacity='0';return;}
-      }
-      if(!(r.width>0 && r.height>0)){frame.style.opacity='0';return;}
-      showFrame(frame,r,card,spec.radius,spec.clipScroll);
-    });
-    frames.slice(targets.length).forEach(f=>f.style.opacity='0');
-  }
-  function schedule(){
-    if(pending) return;
-    pending=true;
-    requestAnimationFrame(update);
-  }
-  if(typeof ResizeObserver==='function') resizeObserver=new ResizeObserver(schedule);
-  const observer=new MutationObserver(schedule);
-  observer.observe(overlay,{attributes:true,attributeFilter:['class'],childList:true,subtree:true});
-  overlay.addEventListener('scroll',schedule,{passive:true,capture:true});
-  window.addEventListener('resize',schedule,{passive:true});
-  window.addEventListener('pageshow',schedule,{passive:true});
-  if(window.visualViewport) window.visualViewport.addEventListener('resize',schedule,{passive:true});
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
-  schedule();
-})();
-</script>
+  /* No styling at all for: menu hamburger/items; team/tournament dropdowns;
+     table and GEEK statistic cells/buttons; score boxes; PDF choice options;
+     information panel surfaces and popup shells. */
+</style>
 </body>
 </html>

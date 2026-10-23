@@ -1,3 +1,4 @@
+<!-- SSnoHCP V1.20 TEST | BASE KEY: 1.19-K8H4CP | BUILD KEY: 1.20-M7H4CQ | Leaderboard THRU uses identical SSHCP backend value rather than converting to starting-hole-relative physical hole; SWITCH AUTHORIZATION and STARTING HOLE popups borderless. All other scoring/UX preserved. -->
 <!-- SSnoHCP V1.19 TEST | BASE KEY: 1.18-J7H4CP | BUILD KEY: 1.19-K8H4CP | Preserve HOME/LEADERBOARD event-name case; SCORE X hidden; icon X and GEEK download no shadow; GAME detail border removed. Donor: V1.18. -->
 <!-- SSnoHCP V1.18 TEST | BASE KEY 1.17-Q8H4CY | BUILD KEY 1.18-J7H4CP | HOME image-only adjustment: logo-to-primary-button gap hv(25) -> hv(14). All button positions/dimensions, approved shadows, scripts, and other layout unchanged. Donor: V1.17. -->
 <!-- SSnoHCP V1.17 TEST | BASE KEY 1.16-B7H4CX | BUILD KEY 1.17-Q8H4CY | Button shadows: include physical HOME menu buttons. CONTROL CENTER Screen Info row remains a flat transparent layout group; START/COPY alone raised. No tables, dropdowns, popup shell, scoring or Worker changes. -->
@@ -16164,7 +16165,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 </style>
 
 
-<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.19';window.SSNOHCP_BUILD_KEY='1.19-K8H4CP';</script>
+<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.20';window.SSNOHCP_BUILD_KEY='1.20-M7H4CQ';</script>
 <style id="ssnohcp-v110-leaderboard-thru-and-scorecard-hole">
 /* V1.10: HOLE numbers on scorecard remain 700 at their original size. */
 #scorecardView .hole-cell .hole-number {
@@ -16308,7 +16309,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 
         <button id="testLogHotspot" class="home-event-test-hotspot" type="button" aria-label="Open test log">
           <span id="homeEventInfoV2255" class="home-event-info"></span>
-          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.19</span></span>
+          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.20</span></span>
         </button>
         <script>
           (function () {
@@ -18990,7 +18991,7 @@ let scoreTimingDetail =
 
     function showSwitchAuthorization(){
       closeModal();
-      els.modalOverlay.classList.add('switch-authorization');
+      els.modalOverlay.classList.add('switch-authorization', 'golf-switch-auth-borderless-v1');
       els.modalTitle.textContent='SWITCH AUTHORIZATION';
       els.modalTitle.classList.remove('testing');
       els.modalBody.innerHTML=
@@ -19316,6 +19317,8 @@ let scoreTimingDetail =
       if (!tournamentUsesShotgunStartV1613()) return false;
 
       closeModal();
+      /* Borderless presentation only; shotgun detection and play order unchanged. */
+      els.modalOverlay.classList.add('golf-starting-hole-borderless-v1');
 
       els.modalTitle.textContent =
         'STARTING HOLE ' + String(scorecardStartingHoleV16(selectedTeam));
@@ -36769,26 +36772,17 @@ let scoreTimingDetail =
           );
 
 
-          /* SSnoHCP V1.0: THRU is the last sequentially completed hole,
-             not the hole count. Progress fill above retains hole COUNT.
-             For shotgun starts, start 10 + 3 completed -> H12;
-             finishing all 18 returns to H9. Out-of-order edits require
-             explicit backend last-hole metadata for perfect accuracy. */
-          const matchingTeamV10 = teams.find(team =>
-            Number(team && team.slot) === Number(row.slot));
-          const explicitLastHoleV10 = Number(
-            row.lastCompletedHole ?? row.lastHoleCompleted ?? row.lastPlayedHole
-          );
-          const startingHoleV10 = scorecardStartingHoleV16(matchingTeamV10 || row);
+          /* Use the SAME authoritative LiveLeaderboard THRU value as SSHCP.
+             The Worker passes through the sheet's recorded-hole count. Never
+             convert that count into a physical hole number via startingHole:
+             shotgun starts, skipped holes, and wraparound are handled by the
+             unchanged scorecard play order and backend score storage.
+             SSnoHCP retains its prior single-value presentation (dash at 0). */
           const holeCountV10 = Math.max(0, Math.min(18, Number(row.thru) || 0));
-          const displayedHoleV10 = holeCountV10 <= 0 ? '–' :
-            (Number.isInteger(explicitLastHoleV10) && explicitLastHoleV10 >= 1 && explicitLastHoleV10 <= 18
-              ? String(explicitLastHoleV10)
-              : String(((startingHoleV10 + holeCountV10 - 2) % 18) + 1));
           const throughValue = document.createElement('div');
           throughValue.className = 'leader-through-value ssnohcp-thru-value-v10' +
             (holeCountV10 > 0 ? ' has-progress' : '');
-          throughValue.textContent = displayedHoleV10;
+          throughValue.textContent = holeCountV10 > 0 ? row.thru : '–';
           throughCell.appendChild(throughValue);
 
           const total =
@@ -39008,6 +39002,8 @@ let scoreTimingDetail =
           'quick-guide',
           'quick-guide-normal-v2110',
           'switch-authorization',
+          'golf-switch-auth-borderless-v1',
+          'golf-starting-hole-borderless-v1',
           'access-key-gate-v2134',
           'end-scramble-confirm-v2136',
           'tournament-result',
@@ -42088,6 +42084,15 @@ let scoreTimingDetail =
       box-shadow: none !important;
       -webkit-box-shadow: none !important;
     }
+  }
+</style>
+
+
+<!-- Borderless only for SWITCH AUTHORIZATION and STARTING HOLE intro. -->
+<style id="golf-v-next-borderless-intro-modals">
+  #modalOverlay.golf-switch-auth-borderless-v1 .modal-box,
+  #modalOverlay.golf-starting-hole-borderless-v1 .modal-box {
+    border: 0 !important;
   }
 </style>
 

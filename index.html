@@ -1,3 +1,4 @@
+<!-- SSnoHCP V1.17 TEST | BASE KEY 1.16-B7H4CX | BUILD KEY 1.17-Q8H4CY | Button shadows: include physical HOME menu buttons. CONTROL CENTER Screen Info row remains a flat transparent layout group; START/COPY alone raised. No tables, dropdowns, popup shell, scoring or Worker changes. -->
 <!-- SSnoHCP V1.16 TEST | BASE KEY 1.10-Y8H4CP | BUILD KEY 1.16-B7H4CX | UI only: exterior box-shadow on standalone clickable action buttons; exclude all table components, score boxes, selectors/dropdowns/menus and popup shells. Fresh branch from protected V1.10 GOLDEN. -->
 <!-- SSnoHCP V1.10 TEST — exact SSnoHCP V1.8 (1.8-W7H4CP) donor. Scorecard HOLE numbers enforce weight 700 at original size; leaderboard THRU completed-hole numerals use weight 500 and font-size 50% of actual leaderboard row height. HOME/runtime/build version updated. No other layout, scoring, Worker, manifest, or routing changes. -->
 <!-- SSnoHCP | BASE KEY: 1.8-W7H4CP | BUILD KEY: 1.10-Y8H4CP -->
@@ -16161,7 +16162,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 </style>
 
 
-<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.16';window.SSNOHCP_BUILD_KEY='1.16-B7H4CX';</script>
+<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.17';window.SSNOHCP_BUILD_KEY='1.17-Q8H4CY';</script>
 <style id="ssnohcp-v110-leaderboard-thru-and-scorecard-hole">
 /* V1.10: HOLE numbers on scorecard remain 700 at their original size. */
 #scorecardView .hole-cell .hole-number {
@@ -16305,7 +16306,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 
         <button id="testLogHotspot" class="home-event-test-hotspot" type="button" aria-label="Open test log">
           <span id="homeEventInfoV2255" class="home-event-info"></span>
-          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.16</span></span>
+          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.17</span></span>
         </button>
         <script>
           (function () {
@@ -42021,6 +42022,40 @@ let scoreTimingDetail =
   /* No styling at all for: menu hamburger/items; team/tournament dropdowns;
      table and GEEK statistic cells/buttons; score boxes; PDF choice options;
      information panel surfaces and popup shells. */
+</style>
+
+<!-- SSnoHCP V1.17: precise follow-up to V1.16. Only physical navigation menu buttons and the flat CC metrics layout. -->
+<style id="ssnohcp-v117-menu-buttons-and-flat-cc-metrics">
+  /* MENU and its seven individual, physical navigation buttons are buttons.
+     Preserve the existing menu panel, its geometry, backdrop, and scroll. */
+  #homeView #homeMenuToggleV2054,
+  #homeView #homeMenuPanelV2054 > button.home-menu-item-v2054 {
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.28) !important;
+  }
+  /* The screen diagnostics strip is ONLY a 3-column layout, not a card.
+     No stroke, fill, elevation, or clipping around START / text / COPY. */
+  #testLogView #controlCenterViewportMetricsV188 {
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    filter: none !important;
+    outline: none !important;
+    overflow: visible !important;
+  }
+  #testLogView #screenLogScaleInfoV238 {
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+  /* START and COPY remain the only raised shapes in the diagnostic row. */
+  #testLogView #screenLogStartButtonV238,
+  #testLogView #screenLogCopyButtonV238 {
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.28) !important;
+  }
 </style>
 </body>
 </html>

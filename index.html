@@ -1,3 +1,4 @@
+<!-- SSnoHCP V1.19 TEST | BASE KEY: 1.18-J7H4CP | BUILD KEY: 1.19-K8H4CP | Preserve HOME/LEADERBOARD event-name case; SCORE X hidden; icon X and GEEK download no shadow; GAME detail border removed. Donor: V1.18. -->
 <!-- SSnoHCP V1.18 TEST | BASE KEY 1.17-Q8H4CY | BUILD KEY 1.18-J7H4CP | HOME image-only adjustment: logo-to-primary-button gap hv(25) -> hv(14). All button positions/dimensions, approved shadows, scripts, and other layout unchanged. Donor: V1.17. -->
 <!-- SSnoHCP V1.17 TEST | BASE KEY 1.16-B7H4CX | BUILD KEY 1.17-Q8H4CY | Button shadows: include physical HOME menu buttons. CONTROL CENTER Screen Info row remains a flat transparent layout group; START/COPY alone raised. No tables, dropdowns, popup shell, scoring or Worker changes. -->
 <!-- SSnoHCP V1.16 TEST | BASE KEY 1.10-Y8H4CP | BUILD KEY 1.16-B7H4CX | UI only: exterior box-shadow on standalone clickable action buttons; exclude all table components, score boxes, selectors/dropdowns/menus and popup shells. Fresh branch from protected V1.10 GOLDEN. -->
@@ -16163,7 +16164,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 </style>
 
 
-<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.18';window.SSNOHCP_BUILD_KEY='1.18-J7H4CP';</script>
+<script id="ssnohcp-v10-identity">window.SSNOHCP_VERSION='V1.19';window.SSNOHCP_BUILD_KEY='1.19-K8H4CP';</script>
 <style id="ssnohcp-v110-leaderboard-thru-and-scorecard-hole">
 /* V1.10: HOLE numbers on scorecard remain 700 at their original size. */
 #scorecardView .hole-cell .hole-number {
@@ -16307,7 +16308,7 @@ body.sshcp-recovery-v2351 #scorecardView .score-button.pending-clear-v2351.activ
 
         <button id="testLogHotspot" class="home-event-test-hotspot" type="button" aria-label="Open test log">
           <span id="homeEventInfoV2255" class="home-event-info"></span>
-          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.18</span></span>
+          <span class="home-version-info"><span>SSnoHCP</span> <span class="home-version-number-v1835">V1.19</span></span>
         </button>
         <script>
           (function () {
@@ -42058,5 +42059,37 @@ let scoreTimingDetail =
     box-shadow: 0 5px 16px rgba(0, 0, 0, 0.28) !important;
   }
 </style>
+
+<!-- UI refinement: preserve event-name casing; exclude close X/download glyph from shadows;
+     hide SCORE-entry X; remove GAME-detail popup frame. No scoring/navigation changes. -->
+<style id="golf-ui-close-icon-game-detail-case-fix">
+  /* Event descriptions are editorial text, not forced uppercase buttons. */
+  #homeView #homeEventInfoV2255,
+  #leaderboardView #leaderTiming {
+    text-transform: none !important;
+  }
+
+  /* Keep score-entry cancellation wiring intact, but remove its unnecessary X. */
+  #scoreEntryOverlay #scoreEntryCancel {
+    display: none !important;
+  }
+
+  /* The GAME MODE main popup is already borderless; match its detail popups. */
+  #modalOverlay.game-hole-info-v2026 .modal-box {
+    border: 0 !important;
+  }
+
+  /* The old standalone-action shadow was declared in a CSS cascade layer with
+     !important. Override that shadow inside the SAME layer for icon-only tools. */
+  @layer ssnohcp-v116-action-shadows {
+    #scoreEntryOverlay #scoreEntryCancel,
+    #modalOverlay #modalCloseX,
+    #modalOverlay button.geek-download-v2277 {
+      box-shadow: none !important;
+      -webkit-box-shadow: none !important;
+    }
+  }
+</style>
+
 </body>
 </html>
